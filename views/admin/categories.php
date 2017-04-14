@@ -6,7 +6,7 @@
 			<h2>{{ '{0} Categories|{1} One Category|]1,Inf[ %count% Categories' | transChoice entries.length {count:entries.length} }}</h2>
 		</div>
 		<div data-uk-margin>
-			<a class="uk-button uk-button-primary" :href="$url.route('admin/calendar/category/edit')">{{ 'Add Category' | trans }}</a>
+			<a class="uk-button uk-button-primary" :href="$url.route('admin/calendar/categories/edit')">{{ 'Add Category' | trans }}</a>
 		</div>
 		
 	</div>
@@ -25,7 +25,7 @@
 			</thead>
 			<tbody>
 				<tr class="check-item" v-for="category in entries">
-					<td><a :href="$url.route('admin/calendar/category/edit', { id: category.id })">{{ category.name }}</a></td>
+					<td><a :href="$url.route('admin/calendar/categories/edit', { id: category.id })">{{ category.name }}</a></td>
 					<td>{{ category.color }}</td>
 					<td>
 						<a :href="$url.route('admin/user/edit', { id: category.author_id })">{{ category.author.name }}</a>

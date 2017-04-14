@@ -23,7 +23,9 @@
 				'path' => '/calendar',
 				'controller' => [
 					'MHDev\\Calendar\\Controller\\CalendarController',
-					'MHDev\\Calendar\\Controller\\CalendarAdminController'
+					'MHDev\\Calendar\\Controller\\CalendarAdminController',
+					'MHDev\\Calendar\\Controller\\EventController',
+					'MHDev\\Calendar\\Controller\\CategoryController'
 				]
 			]
 		],

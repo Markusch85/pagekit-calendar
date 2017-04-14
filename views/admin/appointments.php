@@ -17,7 +17,7 @@
 			 </template>
 		</div>
 		<div data-uk-margin>
-			<a class="uk-button uk-button-primary" :href="$url.route('admin/calendar/appointment/edit')">{{ 'Add Appointment' | trans }}</a>
+			<a class="uk-button uk-button-primary" :href="$url.route('admin/calendar/appointments/edit')">{{ 'Add Appointment' | trans }}</a>
 		</div>
 	</div>
 	
@@ -38,7 +38,7 @@
 			<tbody>
 				<tr class="check-item" v-for="appointment in entries">
 					<td><input type="checkbox" name="id" :value="appointment.id"></td>
-					<td><a :href="$url.route('admin/calendar/appointment/edit', { id: appointment.id })">{{ appointment.title }}</a></td>
+					<td><a :href="$url.route('admin/calendar/appointments/edit', { id: appointment.id })">{{ appointment.title }}</a></td>
 					<td><time datetime="appointment.start">{{ appointment.start | date "short" }}</time></td>
 					<td><time datetime="appointment.end">{{ appointment.end | date "short" }}</time></td>
 					<td>

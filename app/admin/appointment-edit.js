@@ -14,7 +14,7 @@ $(function(){
 
             save: function() {
 
-                this.$http.post('admin/calendar/appointment/save', { appointment: this.appointment }, function(data, test) {
+                this.$http.post('admin/calendar/appointments/save', { appointment: this.appointment }, function(data) {
 					this.$set('$data.appointment', data.appointment);
                     UIkit.notify(vm.$trans('Appointment saved.'), '');
                 }).error(function(data) {
