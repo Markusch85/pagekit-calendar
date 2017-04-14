@@ -20,9 +20,6 @@
 				'$view' => [
 					'title' => 'Calendar Events',
 					'name'  => 'calendar:views/admin/event-index.php',
-				],
-				'$data' => [
-					'events' => Event::query()->related(['author'])->get()
 				]
 			];
 		}

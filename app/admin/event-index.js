@@ -11,7 +11,6 @@ $(function(){
         },
 
 		ready: function () {
-	        //this.resource = this.$resource('api/gallery{/id}');
 	        this.$watch('', this.load, {immediate: true});
 	    },
 		
@@ -27,7 +26,6 @@ $(function(){
 			},
 			
             remove: function() {
-
                 this.$http.post('admin/calendar/events/remove', { ids: this.selected }, function() {
                     UIkit.notify(vm.$trans('Events deleted.'), '');
 					this.load();

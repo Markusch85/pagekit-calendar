@@ -5,13 +5,33 @@ $(function(){
         el: '#categories',
 
         data: {
-            entries: window.$data.categories
+            entries: [],
+			selected: [],
+			count: ''
         },
+		
+		ready: function () {
+	        this.$watch('', this.load, {immediate: true});
+	    },
 
         methods: {
 
+			load: function () {
+				this.$http.post('admin/calendar/categories/load', function(data) {
+					this.$set('$data.entries', data.$data.categories);
+					this.$set('selected', []);
+                }).error(function(data) {
+                    UIkit.notify(data, 'danger');
+                });
+			},
+		
             remove: function(category) {
-                this.categories.$remove(category);
+                this.$http.post('admin/calendar/categories/remove', { ids: this.selected }, function() {
+                    UIkit.notify(vm.$trans('Categories deleted.'), '');
+					this.load();
+                }).error(function(data) {
+                    UIkit.notify(data, 'danger');
+                });
             }
         }
 
