@@ -22,7 +22,7 @@
 					$table->addColumn('description', 'text');
 					$table->addColumn('start', 'datetime');
 					$table->addColumn('end', 'datetime');
-					$table->addColumn('allDay', 'boolean');
+					$table->addColumn('allDay', 'boolean', ['notnull' => false]);
 					$table->addColumn('data', 'json_array', ['notnull' => false]);
 					$table->addColumn('author_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
 					$table->addColumn('category_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
