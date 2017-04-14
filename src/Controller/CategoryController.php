@@ -4,7 +4,7 @@
 	use Pagekit\Application as App;
 	use Pagekit\User\Model\Role;
 	use MHDev\Calendar\Model\Category;
-	use MHDev\Calendar\Model\Appointment;
+	use MHDev\Calendar\Model\Event;
 
 	/**
 	 * @Access(admin=true)
@@ -19,7 +19,7 @@
 			return [
 				'$view' => [
 					'title' => 'Calendar Categories',
-					'name'  => 'calendar:views/admin/categories.php',
+					'name'  => 'calendar:views/admin/category-index.php',
 				],
 				'$data' => [
 					'categories' => Category::query()->related(['author'])->get()

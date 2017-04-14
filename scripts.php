@@ -15,8 +15,8 @@
 					$table->setPrimaryKey(['id']);
 				});
 			};
-			if ($util->tableExists('@calendar_appointments') === false) {
-				$util->createTable('@calendar_appointments', function ($table) {
+			if ($util->tableExists('@calendar_events') === false) {
+				$util->createTable('@calendar_events', function ($table) {
 					$table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
 					$table->addColumn('title', 'string', ['length' => 255, 'default' => '']);
 					$table->addColumn('description', 'text', ['notnull' => false]);
@@ -39,8 +39,8 @@
 			
 			$util = $app['db']->getUtility();
 
-			if ($util->tableExists('@calendar_appointments')) {
-				$util->dropTable('@calendar_appointments');
+			if ($util->tableExists('@calendar_events')) {
+				$util->dropTable('@calendar_events');
 			}
 			
 			if ($util->tableExists('@calendar_categories')) {

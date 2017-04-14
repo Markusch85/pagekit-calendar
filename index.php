@@ -48,13 +48,13 @@
 				'access' => 'calendar: manage own categories'
 			],
 			
-			'calendar: appointments' => [
+			'calendar: events' => [
 				'parent' => 'calendar',
-				'label'  => 'Appointments',
+				'label'  => 'Events',
 				'icon'   => 'app/system/assets/images/placeholder-icon.svg',
-				'url'    => '@calendar/appointments',
-				'active' => '@calendar/appointments*',
-				'access' => 'calendar: manage own appointments'
+				'url'    => '@calendar/events',
+				'active' => '@calendar/events*',
+				'access' => 'calendar: manage own events'
 			],
 			
 			'calendar: settings' => [
@@ -77,11 +77,11 @@
 			'calendar: manage all categories' => [
 				'title' => 'Manage all categories',
 			],
-			'calendar: manage own appointments' => [
-				'title' => 'Manage own appointments',
+			'calendar: manage own events' => [
+				'title' => 'Manage own events',
 			],
-			'calendar: manage all appointments' => [
-				'title' => 'Manage all appointments',
+			'calendar: manage all events' => [
+				'title' => 'Manage all events',
 			],
 		],
 		

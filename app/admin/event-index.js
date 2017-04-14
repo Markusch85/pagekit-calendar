@@ -2,7 +2,7 @@ $(function(){
 
     var vm = new Vue({
 
-        el: '#appointments',
+        el: '#events',
 
         data: {
             entries: [],
@@ -18,8 +18,8 @@ $(function(){
         methods: {
 
 			load: function () {
-				this.$http.post('admin/calendar/appointments/load', function(data) {
-					this.$set('$data.entries', data.$data.appointments);
+				this.$http.post('admin/calendar/events/load', function(data) {
+					this.$set('$data.entries', data.$data.events);
 					this.$set('selected', []);
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');
@@ -28,8 +28,8 @@ $(function(){
 			
             remove: function() {
 
-                this.$http.post('admin/calendar/appointments/remove', { ids: this.selected }, function() {
-                    UIkit.notify(vm.$trans('Appointments deleted.'), '');
+                this.$http.post('admin/calendar/events/remove', { ids: this.selected }, function() {
+                    UIkit.notify(vm.$trans('Events deleted.'), '');
 					this.load();
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');

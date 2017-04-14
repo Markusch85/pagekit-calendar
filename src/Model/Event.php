@@ -7,9 +7,9 @@ use Pagekit\Database\ORM\ModelTrait;
 use Pagekit\User\Model\User;
 
 /**
- * @Entity(tableClass="@calendar_appointments")
+ * @Entity(tableClass="@calendar_events")
  */
-class Appointment implements \JsonSerializable
+class Event implements \JsonSerializable
 {
 
     use ModelTrait, DataModelTrait;

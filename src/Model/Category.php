@@ -24,9 +24,9 @@ class Category
     public $color;
 
 	/**
-	 * @HasMany(targetEntity="Appointment", keyFrom="id", keyTo="appointment_id")
+	 * @HasMany(targetEntity="Event", keyFrom="id", keyTo="event_id")
 	 */
-	public $appointments;
+	public $events;
 	
     /** @Column(type="integer") */
     public $author_id;

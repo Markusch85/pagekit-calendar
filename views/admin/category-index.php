@@ -1,4 +1,4 @@
-<?php $view->script('categories', 'calendar:app/admin/categories.js', 'vue') ?>
+<?php $view->script('category-index', 'calendar:app/admin/category-index.js', 'vue') ?>
 
 <div id="categories" class="uk-form">
 	<div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>

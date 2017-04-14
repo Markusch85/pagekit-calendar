@@ -3,7 +3,7 @@
 	namespace MHDev\Calendar\Controller;
 
 	use Pagekit\Application as App;
-	use MHDev\Calendar\Model\Appointment;
+	use MHDev\Calendar\Model\Event;
 
 	class CalendarController
 	{
@@ -19,7 +19,7 @@
 					'name' => 'calendar:views/calendar.php'
 				],
 				'$data' => [
-					'events' => array_values(Appointment::findAll())
+					'events' => array_values(Event::findAll())
 				],
 				'$config' =>  App::module('calendar')->config()
 			];

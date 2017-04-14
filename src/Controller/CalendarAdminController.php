@@ -4,7 +4,7 @@
 	use Pagekit\Application as App;
 	use Pagekit\User\Model\Role;
 	use MHDev\Calendar\Model\Category;
-	use MHDev\Calendar\Model\Appointment;
+	use MHDev\Calendar\Model\Event;
 
 	/**
 	 * @Access(admin=true)
