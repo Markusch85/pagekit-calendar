@@ -132,6 +132,19 @@
 		}
 		
 		/**
+		 * @Route("/appointments/load", name="appointments/load")
+		 * @Access("calendar: manage own appointments || category: manage all appointments")
+		 */
+		public function loadAppointmentsAction()
+		{
+			return [
+				'$data' => [
+					'appointments' => Appointment::query()->related(['author'])->get()
+				]
+			];
+		}
+		
+		/**
 		 * @Route("/appointment/edit", name="appointment/edit")
 		 * @Access("calendar: manage own appointments || category: manage all appointments")
 		 * @Request({"id": "int"})
@@ -191,6 +204,24 @@
 			
 			$appointment = Appointment::create();
 			$appointment->save($data);
+			return ['message' => 'success', 'appointment' => $appointment];
+		}
+		
+		/**
+		 * @Route("/appointments/remove", name="appointments/remove")
+		 * @Request({"ids": "array"}, csrf=true)
+		 */
+		public function removeAppointmentsAction($ids = [])
+		{
+			foreach ($ids as &$id) {
+				if ($id && $appointment = Appointment::find($id)) {
+					$appointment->delete();
+				} else {
+					if ($id) {
+						App::abort(404, __('Appointment not found.'));
+					}
+				}
+			}
 			return ['message' => 'success', 'appointment' => $appointment];
 		}
 	}
