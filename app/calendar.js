@@ -49,7 +49,7 @@ $(function(){
 					timezone: 'local',
 					events: $data.events,
 					eventClick: self.openEvent,
-					theme: true,
+					theme: false,
 					themeButtonIcons: {
 						prev: 'uk-icon-arrow-left',
 						next: 'uk-icon-arrow-right'
