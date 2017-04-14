@@ -1,0 +1,17 @@
+{
+    "name": "mhdev/calendar",
+    "version": "0.1.0-alpha",
+    "type": "pagekit-extension",
+    "title": "Calendar",
+	"license": "MIT",
+    "authors": [
+        {
+            "name": "MH Development",
+            "email": "info@mh-dev.net",
+            "homepage": "http://mh-dev.net"
+        }
+    ],
+	"extra": {
+       "scripts": "scripts.php"
+    }
+}
