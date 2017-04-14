@@ -48,7 +48,12 @@ $(function(){
 					timeFormat: $locale.DATETIME_FORMATS.shortTime,
 					timezone: 'local',
 					events: $data.events,
-					eventClick: self.openEvent
+					eventClick: self.openEvent,
+					theme: true,
+					themeButtonIcons: {
+						prev: 'uk-icon-arrow-left',
+						next: 'uk-icon-arrow-right'
+					}
 				})
 			},
 			
