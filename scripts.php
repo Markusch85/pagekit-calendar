@@ -19,7 +19,7 @@
 				$util->createTable('@calendar_appointments', function ($table) {
 					$table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
 					$table->addColumn('title', 'string', ['length' => 255, 'default' => '']);
-					$table->addColumn('description', 'text');
+					$table->addColumn('description', 'text', ['notnull' => false]);
 					$table->addColumn('start', 'datetime');
 					$table->addColumn('end', 'datetime');
 					$table->addColumn('allDay', 'boolean', ['notnull' => false]);

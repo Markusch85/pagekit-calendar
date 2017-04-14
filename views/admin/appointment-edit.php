@@ -21,15 +21,17 @@
 		<div class="pk-width-content uk-row-first">
 
 			<div class="uk-form-row">
-				<input class="uk-width-1-1 uk-form-large" name="title" placeholder="Enter title" type="text" v-model="appointment.title">
+				<input class="uk-width-1-1 uk-form-large" name="title" placeholder="Enter title" type="text" v-model="appointment.title" v-validate:required>
+				<p class="uk-form-help-block uk-text-danger" v-show="form.title.invalid">{{ 'Title cannot be blank.' | trans }}</p>
 			</div>
 
 			<div class="uk-form-row">
                 <label for="form-category" class="uk-form-label">{{ 'Category' | trans }}</label>
                 <div class="uk-form-controls">
-                    <select id="form-category" class="uk-width-1-1" v-model="appointment.category_id">
+                    <select id="form-category" name="category" class="uk-width-1-1" v-model="appointment.category_id" v-validate:required>
                         <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                     </select>
+					<p class="uk-form-help-block uk-text-danger" v-show="form.category.invalid">{{ 'Category cannot be blank.' | trans }}</p>
                 </div>
             </div>
 			
