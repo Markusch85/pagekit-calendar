@@ -40,7 +40,8 @@
                 }
 
                 $category = Category::create([
-                    'author_id' => App::user()->id
+                    'author_id' => App::user()->id,
+					'color' => '#489be0'
                 ]);
             }
 			

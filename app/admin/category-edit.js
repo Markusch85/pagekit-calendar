@@ -13,8 +13,9 @@ $(function(){
 
             save: function() {
 
-                this.$http.post('admin/calendar/categories/save', { category: this.category }, function() {
-                    UIkit.notify(vm.$trans('Saved.'), '');
+                this.$http.post('admin/calendar/categories/save', { category: this.category }, function(data) {
+					this.$set('$data.category', data.category);
+                    UIkit.notify(vm.$trans('Category saved.'), '');
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');
                 });
