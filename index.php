@@ -14,15 +14,27 @@
 		'autoload' => [
 			'MHDev\\Calendar\\' => 'src'
 		],
+		
+		'nodes' => [
+
+			'Calendar' => [
+				'name'       => '@calendar',
+				'label'      => 'Calendar',
+				'controller' => 'MHDev\\Calendar\\Controller\\SiteController',
+				'protected'  => true,
+
+			]
+
+		],
 
 		// array of routes
 		'routes' => [
 
 			// identifier to reference the route from your code
-			'@calendar' => [
-				'path' => '/calendar',
+			
+			'/calendar' => [
+				'name' => '@calendar',
 				'controller' => [
-					'MHDev\\Calendar\\Controller\\CalendarController',
 					'MHDev\\Calendar\\Controller\\CalendarAdminController',
 					'MHDev\\Calendar\\Controller\\EventController',
 					'MHDev\\Calendar\\Controller\\CategoryController'
@@ -89,7 +101,19 @@
 
 		'config' => [
 			'general' => [
-				'title'              => 'Calendar'
+				'title' => 'Calendar'
+			],
+			'calendar' => [
+				'views' => [
+					'month' => true,
+					'week' => true,
+					'day' => true,
+					'list' => 'none'
+				],
+				'buttons' => [
+					'today' => true,
+					'prevnext' => true
+				]
 			]
 		]
 	];
