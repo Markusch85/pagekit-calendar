@@ -21,7 +21,8 @@
 		<div class="pk-width-content uk-row-first">
 
 			<div class="uk-form-row">
-				<input class="uk-width-1-1 uk-form-large" name="title" placeholder="Enter title" type="text" v-model="category.name">
+				<input class="uk-width-1-1 uk-form-large" name="title" placeholder="Enter title" type="text" v-model="category.name" v-validate:required>
+				<p class="uk-form-help-block uk-text-danger" v-show="form.title.invalid">{{ 'Title cannot be blank.' | trans }}</p>
 			</div>
 
 			
