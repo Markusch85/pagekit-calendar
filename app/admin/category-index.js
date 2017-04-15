@@ -17,7 +17,7 @@ $(function(){
         methods: {
 
 			load: function () {
-				this.$http.post('admin/calendar/categories/load', function(data) {
+				this.$http.post('calendar/categories/load', function(data) {
 					this.$set('$data.entries', data.$data.categories);
 					this.$set('selected', []);
                 }).error(function(data) {
@@ -26,7 +26,7 @@ $(function(){
 			},
 		
             remove: function(category) {
-                this.$http.post('admin/calendar/categories/remove', { ids: this.selected }, function() {
+                this.$http.post('calendar/categories/remove', { ids: this.selected }, function() {
                     UIkit.notify(vm.$trans('Categories deleted.'), '');
 					this.load();
                 }).error(function(data) {

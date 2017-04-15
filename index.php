@@ -15,29 +15,18 @@
 			'MHDev\\Calendar\\' => 'src'
 		],
 		
-		'nodes' => [
-
-			'Calendar' => [
-				'name'       => '@calendar',
-				'label'      => 'Calendar',
-				'controller' => 'MHDev\\Calendar\\Controller\\SiteController',
-				'protected'  => true,
-
-			]
-
-		],
 
 		// array of routes
 		'routes' => [
 
 			// identifier to reference the route from your code
-			
 			'/calendar' => [
 				'name' => '@calendar',
 				'controller' => [
 					'MHDev\\Calendar\\Controller\\CalendarAdminController',
 					'MHDev\\Calendar\\Controller\\EventController',
-					'MHDev\\Calendar\\Controller\\CategoryController'
+					'MHDev\\Calendar\\Controller\\CategoryController',
+					'MHDev\\Calendar\\Controller\\SiteController'
 				]
 			]
 		],
@@ -115,5 +104,12 @@
 					'prevnext' => true
 				]
 			]
+		],
+		
+		'events' => [
+			'view.scripts' => function ($event, $scripts) {
+				$scripts->register('calendar-link', 'calendar:app/bundle/link-calendar.js', '~panel-link');
+			},
+
 		]
 	];

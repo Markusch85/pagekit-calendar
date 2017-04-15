@@ -6,13 +6,11 @@
 	use MHDev\Calendar\Model\Category;
 	use MHDev\Calendar\Model\Event;
 
-	/**
-	 * @Access(admin=true)
-	 */
 	class CategoryController
 	{
 		/**
 		 * @Access("system: access settings")
+		 * @Access(admin=true)
 		 */
 		public function categoriesAction()
 		{
