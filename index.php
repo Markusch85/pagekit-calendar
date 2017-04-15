@@ -25,8 +25,15 @@
 				'controller' => [
 					'MHDev\\Calendar\\Controller\\CalendarAdminController',
 					'MHDev\\Calendar\\Controller\\EventController',
-					'MHDev\\Calendar\\Controller\\CategoryController',
 					'MHDev\\Calendar\\Controller\\SiteController'
+				]
+			],
+			
+			// identifier to reference the route from your code
+			'/api/calendar' => [
+				'name' => '@calendar/api',
+				'controller' => [
+					'MHDev\\Calendar\\Controller\\CategoryApiController',
 				]
 			]
 		],

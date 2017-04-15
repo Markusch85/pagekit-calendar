@@ -98,7 +98,7 @@
 	    },
 
 	    created: function created() {
-	        this.$http.get('calendar/categories/load').then(function (res) {
+	        this.$http.get('api/calendar/categories/load').then(function (res) {
 	            this.$set('categories', res.data.$data.categories);
 	        });
 	    },
