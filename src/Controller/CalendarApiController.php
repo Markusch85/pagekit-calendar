@@ -13,8 +13,11 @@
 		 */
 		public function loadCategoriesAction()
 		{
+			$categories = Category::query()->related(['author'])->get();
+			
 			return [
-				'categories' => Category::query()->related(['author'])->get()
+				'categories' => $categories,
+				'count' => count($categories)
 			];
 		}
 		
@@ -61,8 +64,11 @@
 		 */
 		public function loadEventsAction()
 		{
+			$events = Event::query()->related(['author'])->get();
+			
 			return [
-				'events' => Event::query()->related(['author'])->get()
+				'events' => $events,
+				'count' => count($events)
 			];
 		}
 		
