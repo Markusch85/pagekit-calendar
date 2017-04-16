@@ -18,7 +18,7 @@ $(function(){
 
 			load: function () {
 				this.$http.post('api/calendar/categories/load', function(data) {
-					this.$set('$data.entries', data.$data.categories);
+					this.$set('$data.entries', data.categories);
 					this.$set('selected', []);
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');

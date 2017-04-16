@@ -14,9 +14,7 @@
 		public function loadCategoriesAction()
 		{
 			return [
-				'$data' => [
-					'categories' => Category::query()->related(['author'])->get()
-				]
+				'categories' => Category::query()->related(['author'])->get()
 			];
 		}
 		
@@ -64,9 +62,7 @@
 		public function loadEventsAction()
 		{
 			return [
-				'$data' => [
-					'events' => Event::query()->related(['author'])->get()
-				]
+				'events' => Event::query()->related(['author'])->get()
 			];
 		}
 		
