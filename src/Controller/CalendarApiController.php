@@ -22,6 +22,25 @@
 		}
 		
 		/**
+		 * @Route("/categories/has-events", name="categories/has-events")
+		 * @Request({"categories": "array"})
+		 */
+		public function hasEventsAction($categories = [])
+		{
+			foreach ($categories as &$category) {
+				$events = Event::query()->where(['category_id' => $category])->get();
+				$hasEvents = count($events) > 0;
+				if ($hasEvents) {
+					break;
+				}
+			}
+			
+			return [
+				'hasEvents' => $hasEvents
+			];
+		}
+		
+		/**
 		 * @Access("category: manage categories")
 		 * @Route("/categories/save", name="categories/save")
 		 * @Request({"category": "array", "id": "int"}, csrf=true)
@@ -61,10 +80,15 @@
 		
 		/**
 		 * @Route("/events/load", name="events/load")
+		 * @Request({"category": "int"})
 		 */
-		public function loadEventsAction()
+		public function loadEventsAction($category = 0)
 		{
-			$events = Event::query()->related(['author'])->get();
+			if (!$category) {
+				$events = Event::query()->related(['author'])->get();
+			} else {
+				$events = Event::query()->where(['category_id' => $category])->related(['author'])->get();
+			}
 			
 			return [
 				'events' => $events,

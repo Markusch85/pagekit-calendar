@@ -18,6 +18,7 @@ return [
 	'Delete Categories'															=>	'Kategorien löschen',
 	'{0} %count% Categories|{1} %count% Category|]1,Inf[ %count% Categories'	=>	'{0} %count% Kategorien|{1} %count% Kategorie|]1,Inf[ %count% Kategorien',
 	'{1} %count% Category selected|]1,Inf[ %count% Categories selected'			=>	'{1} %count% Kategorie ausgewählt|]1,Inf[ %count% Kategorien ausgewählt',
+	'One of the selected categories has already events.'						=> 'Eine der ausgewählten Kategorien hat noch Veranstaltungen',
 	
 	// Events
 	'Events'																	=>	'Veranstaltungen',
