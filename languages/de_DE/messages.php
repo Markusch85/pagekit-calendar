@@ -38,7 +38,8 @@ return [
 	'Delete Events?'															=>	'Veranstaltungen löschen?',
 	'Delete Events'																=>	'Veranstaltungen löschen',
 	'{0} %count% Events|{1} %count% Event|]1,Inf[ %count% Events'				=>	'{0} %count% Veranstaltungen|{1} %count% Veranstaltung|]1,Inf[ %count% Veranstaltungen',
-	'{1} %count% Event selected|]1,Inf[ %count% Events selected'				=> '{1} %count% Veranstaltung ausgewählt|]1,Inf[ %count% Veranstaltungen ausgewählt',
+	'{1} %count% Event selected|]1,Inf[ %count% Events selected'				=>	'{1} %count% Veranstaltung ausgewählt|]1,Inf[ %count% Veranstaltungen ausgewählt',
+	'The start date must be before the end date.'								=>	'Der Beginn muss vor dem Ende liegen.',
 	
 	// Settings
 	'Calendar Settings'															=>	'Kalender Einstellungen',

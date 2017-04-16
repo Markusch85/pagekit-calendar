@@ -91,10 +91,16 @@
                     App::abort(404, __('Invalid event id'));
                 }
 
+				$startDate = new \DateTime();
+				$startDate->setTime($startDate->format('H'), 0, 0);
+				$endDate = new \DateTime();
+				$endDate->setTime($startDate->format('H'), 0, 0);
+				$endDate->modify('+1 hour');
+				
                 $event = Event::create([
                     'author_id' => App::user()->id,
-                    'start'  => new \DateTime(),
-                    'end'  => new \DateTime()
+                    'start'  => $startDate,
+                    'end'  => $endDate
                 ]);
             }
 			
