@@ -21,7 +21,7 @@
 		<div class="pk-width-content uk-row-first">
 
 			<div class="uk-form-row">
-				<input class="uk-width-1-1 uk-form-large" name="title" placeholder="Enter title" type="text" v-model="event.title" v-validate:required>
+				<input class="uk-width-1-1 uk-form-large" name="title" :placeholder="'Enter title' | trans" type="text" v-model="event.title" v-validate:required>
 				<p class="uk-form-help-block uk-text-danger" v-show="form.title.invalid">{{ 'Title cannot be blank.' | trans }}</p>
 			</div>
 
@@ -44,14 +44,14 @@
 		
 		<div class="pk-width-sidebar">
 			<div class="uk-form-row">
-				<label class="uk-form-label">Start</label>
+				<label class="uk-form-label">{{ 'Start' | trans }}</label>
 				<div class="uk-form-controls">
 					<input-date :datetime.sync="event.start"></input-date>
 				</div>
 			</div>
 			
 			<div class="uk-form-row">
-				<label class="uk-form-label">End</label>
+				<label class="uk-form-label">{{ 'End' | trans }}</label>
 				<div class="uk-form-controls">
 					<input-date :datetime.sync="event.end"></input-date>
 				</div>

@@ -10,7 +10,7 @@
 				<h2 class="uk-margin-remove">{{ '{1} %count% Event selected|]1,Inf[ %count% Events selected' | transChoice selected.length {count:selected.length} }}</h2>
 				<div class="uk-margin-left">
 					<ul class="uk-subnav pk-subnav-icon">
-						<li><a class="pk-icon-delete pk-icon-hover" title="Delete" data-uk-tooltip="{delay: 500}" @click="remove" v-confirm="'Delete Events?'"></a></li>
+						<li><a class="pk-icon-delete pk-icon-hover" :title="'Delete Events' | trans" data-uk-tooltip="{delay: 500}" @click="remove" v-confirm="'Delete Events?' | trans"></a></li>
 					</ul>
 				</div>
 			 </template>
@@ -25,9 +25,9 @@
 			<thead>
 				<tr>
 					<th class="pk-table-width-minimum"><input type="checkbox" v-check-all:selected.literal="input[name=id]" number></th>
-					<th class="pk-table-min-width-200">Name</th>
-					<th class="pk-table-min-width">Start</th>
-					<th class="pk-table-min-width">End</th>
+					<th class="pk-table-min-width-200">{{ 'Title' | trans }}</th>
+					<th class="pk-table-min-width">{{ 'Start' | trans }}</th>
+					<th class="pk-table-min-width">{{ 'End' | trans }}</th>
 					<th class="pk-table-width-100">
 						<span v-if="!canEditAll">{{ 'Author' | trans }}</span>
 						<input-filter :title="$trans('Author')" :value.sync="config.filter.author" :options="authors" v-else></input-filter>

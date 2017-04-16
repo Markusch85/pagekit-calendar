@@ -56,11 +56,11 @@
 
 	        save: function () {
 	            this.$http.post('admin/system/settings/config', {name: 'calendar', config: this.config}).then(function () {
-	                        this.$notify('Settings saved.');
-	                    }, function (data) {
-	                        this.$notify(data, 'danger');
-	                    }
-	                );
+						this.$notify('Settings saved.');
+					}, function (data) {
+						this.$notify(data, 'danger');
+					}
+				);
 	        }
 
 	    }

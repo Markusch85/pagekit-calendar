@@ -3,13 +3,13 @@
 <div id="categories" class="uk-form">
 	<div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
 		<div class="uk-flex uk-flex-middle uk-flex-wrap" data-uk-margin>
-			<h2 class="uk-margin-remove" v-if="!selected.length">{{ '{0} %count% Categories|{1} %count% Category|]1,Inf[ %count% Events' | transChoice count {count:count} }}</h2>
+			<h2 class="uk-margin-remove" v-if="!selected.length">{{ '{0} %count% Categories|{1} %count% Category|]1,Inf[ %count% Categories' | transChoice count {count:count} }}</h2>
 			
 			<template v-else>
 				<h2 class="uk-margin-remove">{{ '{1} %count% Category selected|]1,Inf[ %count% Categories selected' | transChoice selected.length {count:selected.length} }}</h2>
 				<div class="uk-margin-left">
 					<ul class="uk-subnav pk-subnav-icon">
-						<li><a class="pk-icon-delete pk-icon-hover" title="Delete" data-uk-tooltip="{delay: 500}" @click="remove" v-confirm="'Delete Categories?'"></a></li>
+						<li><a class="pk-icon-delete pk-icon-hover" :title="'Delete Categories' | trans" data-uk-tooltip="{delay: 500}" @click="remove" v-confirm="'Delete Categories?' | trans"></a></li>
 					</ul>
 				</div>
 			 </template>
@@ -25,8 +25,8 @@
 			<thead>
 				<tr>
 					<th class="pk-table-width-minimum"><input type="checkbox" v-check-all:selected.literal="input[name=id]" number></th>
-					<th class="pk-table-min-width-200">Name</th>
-					<th class="pk-table-min-width-200">Color</th>
+					<th class="pk-table-min-width-200">{{ 'Name' | trans }}</th>
+					<th class="pk-table-min-width-200">{{ 'Color' | trans }}</th>
 					<th class="pk-table-width-100">
 						<span v-if="!canEditAll">{{ 'Author' | trans }}</span>
 						<input-filter :title="$trans('Author')" :value.sync="config.filter.author" :options="authors" v-else></input-filter>

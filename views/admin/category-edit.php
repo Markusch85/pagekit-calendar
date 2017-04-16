@@ -21,8 +21,8 @@
 		<div class="pk-width-content uk-row-first">
 
 			<div class="uk-form-row">
-				<input class="uk-width-1-1 uk-form-large" name="title" placeholder="Enter title" type="text" v-model="category.name" v-validate:required>
-				<p class="uk-form-help-block uk-text-danger" v-show="form.title.invalid">{{ 'Title cannot be blank.' | trans }}</p>
+				<input class="uk-width-1-1 uk-form-large" name="title" :placeholder="'Enter name' | trans" type="text" v-model="category.name" v-validate:required>
+				<p class="uk-form-help-block uk-text-danger" v-show="form.title.invalid">{{ 'Name cannot be blank.' | trans }}</p>
 			</div>
 
 			
@@ -30,7 +30,7 @@
 		
 		<div class="pk-width-sidebar">
 			<div class="uk-form-row">
-				<label for="form-color" class="uk-form-label">Farbe</label>
+				<label for="form-color" class="uk-form-label">{{ Color | trans }}</label>
 				<div class="uk-form-controls">
 					<input id="form-color" class="uk-width-1-1" type="color" v-model="category.color">
 				</div>

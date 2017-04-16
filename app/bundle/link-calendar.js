@@ -109,7 +109,7 @@
 
 	    filters: {
 	        link: function link(category) {
-	            return '@calendar/category/' + category.id;
+	            return '@calendar/category?id=' + category.id;
 	        }
 	    }
 

@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="uk-form-row">
-				<label>Time</label>
+				<label>{{ 'Time' | trans }}</label>
 				<div v-if="!event.allDay">
 					<span>{{ event.start._i | date "short" }}</span>
 					<span> - {{ event.end._i | date "short" }}</span>
@@ -32,7 +32,7 @@
 				<div class="uk-form-controls uk-form-controls-text">
 					<p class="uk-form-controls-condensed">
 						<label>
-							<input type="checkbox" v-model="event.allDay" disabled>All day
+							<input type="checkbox" v-model="event.allDay" disabled>{{ 'Allday event' | trans }}
 						</label>
 					</p>
 				</div>

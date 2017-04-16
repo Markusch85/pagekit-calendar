@@ -14,7 +14,7 @@
 		  	return [ 
 
 				'$view' => [
-					'title' => 'Calendar',
+					'title' => __('Calendar'),
 					'name' => 'calendar:views/calendar.php'
 				],
 				'$data' => [
@@ -25,14 +25,15 @@
 		}
 		
 		/**
-		 * @Route("/category/{id}", name="category")
+		 * @Route("/category", name="category")
+		 * @Request({"id": "int"})
 		 */
 		public function categoryAction($id)
 		{
 		  	return [ 
 
 				'$view' => [
-					'title' => 'Calendar',
+					'title' => __('Calendar'),
 					'name' => 'calendar:views/calendar.php'
 				],
 				'$data' => [

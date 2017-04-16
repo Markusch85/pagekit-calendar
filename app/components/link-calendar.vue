@@ -42,7 +42,7 @@
 
         filters: {
             link: function (category) {
-                return '@calendar/category/'+category.id;
+                return '@calendar/category?id='+category.id;
             }
         }
 

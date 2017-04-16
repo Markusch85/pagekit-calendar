@@ -27,7 +27,7 @@ $(function(){
 		
             remove: function(category) {
                 this.$http.post('api/calendar/categories/remove', { ids: this.selected }, function() {
-                    UIkit.notify(vm.$trans('Categories deleted.'), '');
+                    UIkit.notify(vm.$trans('Categories deleted.'));
 					this.load();
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');

@@ -18,7 +18,7 @@
 		{
 			return [
 				'$view' => [
-					'title' => 'Calendar Categories',
+					'title' => __('Calendar Categories'),
 					'name'  => 'calendar:views/admin/category-index.php',
 				]
 			];
@@ -44,7 +44,7 @@
 			$roles = App::db()->createQueryBuilder()
                 ->from('@system_role')
                 ->where(['id' => Role::ROLE_ADMINISTRATOR])
-                ->whereInSet('permissions', ['calendar: manage all categories', 'calendar: manage own categories'], false, 'OR')
+                ->whereInSet('permissions', ['calendar: manage categories'], false, 'OR')
                 ->execute('id')
                 ->fetchAll(\PDO::FETCH_COLUMN);
 
@@ -56,7 +56,7 @@
 			
 			return [
 				'$view' => [
-					'title' => $id ? 'Edit Category' : 'Add Category',
+					'title' => $id ? __('Edit Category') : __('Add Category'),
 					'name'  => 'calendar:views/admin/category-edit.php',
 				],
 				'$data' => [
@@ -73,7 +73,7 @@
 		{
 			return [
 				'$view' => [
-					'title' => 'Calendar Events',
+					'title' => __('Calendar Events'),
 					'name'  => 'calendar:views/admin/event-index.php',
 				]
 			];
@@ -101,7 +101,7 @@
 			$roles = App::db()->createQueryBuilder()
                 ->from('@system_role')
                 ->where(['id' => Role::ROLE_ADMINISTRATOR])
-                ->whereInSet('permissions', ['calendar: manage all events', 'calendar: manage own events'], false, 'OR')
+                ->whereInSet('permissions', ['calendar: manage events'], false, 'OR')
                 ->execute('id')
                 ->fetchAll(\PDO::FETCH_COLUMN);
 
@@ -113,7 +113,7 @@
 						
 			return [
 				'$view' => [
-					'title' => $id ? 'Edit Event' : 'Add Event',
+					'title' => $id ? __('Edit Event') : __('Add Event'),
 					'name'  => 'calendar:views/admin/event-edit.php',
 				],
 				'$data' => [
@@ -131,7 +131,7 @@
 		{
 			return [
 				'$view' => [
-					'title' => 'Calendar Settings',
+					'title' => __('Calendar Settings'),
 					'name'  => 'calendar:views/admin/settings.php',
 				],
 				'$data' => [

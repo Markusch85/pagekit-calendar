@@ -16,7 +16,7 @@ $(function(){
 
                 this.$http.post('api/calendar/events/save', { event: this.event }, function(data) {
 					this.$set('$data.event', data.event);
-                    UIkit.notify(vm.$trans('Event saved.'), '');
+                    UIkit.notify(vm.$trans('Event saved.'));
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');
                 });
