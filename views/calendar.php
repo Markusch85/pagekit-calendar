@@ -1,4 +1,4 @@
-<?php $view->script('calendar', 'calendar:app/calendar.js', 'vue') ?>
+<?php $view->script('calendar', 'calendar:app/calendar.js', ['vue', 'editor', 'uikit']) ?>
 <?php $view->script('moment', 'calendar:assets/js/moment.min.js', 'jquery') ?>
 <?php $view->script('fullCalendar', 'calendar:assets/js/fullcalendar/fullcalendar.min.js') ?>
 <?php $view->script('locale-all', 'calendar:assets/js/fullcalendar/locale-all.js') ?>
@@ -39,10 +39,7 @@
 			</div>
 			
 			<div class="uk-form-row">
-				<label for="form-name" class="uk-form-label">{{ 'Description' | trans }}</label>
-				<article class="uk-article">
-				<div class="uk-margin">{{ event.description | html }}</div>
-				</article>
+				<div v-html="event.description"></div>
 			</div>
 
 			<div class="uk-modal-footer uk-text-right">

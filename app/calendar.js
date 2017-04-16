@@ -11,8 +11,7 @@ $(function(){
 		ready: function () {
 	        this.$watch('', this.load, {immediate: true});
 	    },
-		
-		
+		  
         methods: {
 			load: function () {
 				var locale = $locale.TIMESPAN_FORMATS.localeID;

@@ -37,7 +37,7 @@
 			
 			<div class="uk-form-row">
 				<label for="form-description" class="uk-form-label">{{ 'Description' | trans }}</label>
-				<v-editor id="form-description" :value.sync="event.description" :options="{height: 250}"></textarea>
+				<v-editor id="form-description" :value.sync="event.description" :options="{markdown: true, height: 250}"></v-editor>
 			</div>
 			
 		</div>

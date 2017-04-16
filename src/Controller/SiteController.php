@@ -6,13 +6,25 @@
 
 	class SiteController
 	{
+		 /**
+		 * @var Module
+		 */
+		protected $calendar;
+
+		/**
+		 * Constructor.
+		 */
+		public function __construct()
+		{
+			$this->calendar = App::module('calendar');
+		}
+	
 		/**
 		 * @Route("/")
 		 */
 		public function indexAction()
 		{
 		  	return [ 
-
 				'$view' => [
 					'title' => __('Calendar'),
 					'name' => 'calendar:views/calendar.php'
@@ -30,14 +42,20 @@
 		 */
 		public function categoryAction($id)
 		{
+			$categories = array_values(Event::query()->where(['category_id' => $id])->get());
+			
+			foreach ($categories as &$category) {
+				$category->description = App::content()->applyPlugins($category->description, ['category' => $category, 'markdown' => true]);
+			}
+			
+			
 		  	return [ 
-
 				'$view' => [
 					'title' => __('Calendar'),
 					'name' => 'calendar:views/calendar.php'
 				],
 				'$data' => [
-					'events' => array_values(Event::query()->where(['category_id' => $id])->get())
+					'events' => $categories
 				],
 				'$config' =>  App::module('calendar')->config()
 			];
