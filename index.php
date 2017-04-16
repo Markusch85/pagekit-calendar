@@ -23,8 +23,7 @@
 			'/calendar' => [
 				'name' => '@calendar',
 				'controller' => [
-					'MHDev\\Calendar\\Controller\\CalendarAdminController',
-					'MHDev\\Calendar\\Controller\\EventController',
+					'MHDev\\Calendar\\Controller\\CalendarController',
 					'MHDev\\Calendar\\Controller\\SiteController'
 				]
 			],
@@ -33,7 +32,7 @@
 			'/api/calendar' => [
 				'name' => '@calendar/api',
 				'controller' => [
-					'MHDev\\Calendar\\Controller\\CategoryApiController',
+					'MHDev\\Calendar\\Controller\\CalendarApiController',
 				]
 			]
 		],
@@ -79,17 +78,11 @@
 			'calendar: manage settings' => [
 				'title' => 'Manage settings',
 			],
-			'calendar: manage own categories' => [
-				'title' => 'Manage own categories',
+			'calendar: manage categories' => [
+				'title' => 'Manage categories',
 			],
-			'calendar: manage all categories' => [
-				'title' => 'Manage all categories',
-			],
-			'calendar: manage own events' => [
-				'title' => 'Manage own events',
-			],
-			'calendar: manage all events' => [
-				'title' => 'Manage all events',
+			'calendar: manage events' => [
+				'title' => 'Manage events',
 			],
 		],
 		

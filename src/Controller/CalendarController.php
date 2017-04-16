@@ -9,7 +9,7 @@
 	/**
 	 * @Access(admin=true)
 	 */
-	class CalendarAdminController
+	class CalendarController
 	{		
 		/**
 		 * @Access("system: access settings")
@@ -25,7 +25,7 @@
 		}
 /**
 		 * @Route("/categories/edit", name="categories/edit")
-		 * @Access("calendar: manage own categories || category: manage all categories")
+		 * @Access("calendar: manage categories")
 		 * @Request({"id": "int"})
 		 */
 		public function editCategoryAction($id = 0)
@@ -62,6 +62,64 @@
 				'$data' => [
 					'category' => $category,
 					'authors' => $authors
+				]
+			];
+		}
+		
+		/**
+		 * @Access("system: access settings")
+		 */
+		public function eventsAction()
+		{
+			return [
+				'$view' => [
+					'title' => 'Calendar Events',
+					'name'  => 'calendar:views/admin/event-index.php',
+				]
+			];
+		}
+		
+		/**
+		 * @Route("/events/edit", name="events/edit")
+		 * @Access("calendar: manage events")
+		 * @Request({"id": "int"})
+		 */
+		public function editEventAction($id = 0)
+		{
+			if (!$event = Event::where(compact('id'))->related('author', 'category')->first()) {
+                if ($id) {
+                    App::abort(404, __('Invalid event id'));
+                }
+
+                $event = Event::create([
+                    'author_id' => App::user()->id,
+                    'start'  => new \DateTime(),
+                    'end'  => new \DateTime()
+                ]);
+            }
+			
+			$roles = App::db()->createQueryBuilder()
+                ->from('@system_role')
+                ->where(['id' => Role::ROLE_ADMINISTRATOR])
+                ->whereInSet('permissions', ['calendar: manage all events', 'calendar: manage own events'], false, 'OR')
+                ->execute('id')
+                ->fetchAll(\PDO::FETCH_COLUMN);
+
+			$authors = App::db()->createQueryBuilder()
+                ->from('@system_user')
+                ->whereInSet('roles', $roles)
+                ->execute('id, username')
+                ->fetchAll();
+						
+			return [
+				'$view' => [
+					'title' => $id ? 'Edit Event' : 'Add Event',
+					'name'  => 'calendar:views/admin/event-edit.php',
+				],
+				'$data' => [
+					'event' => $event,
+					'authors' => $authors,
+					'categories' => array_values(Category::findAll())
 				]
 			];
 		}

@@ -14,7 +14,7 @@ $(function(){
 
             save: function() {
 
-                this.$http.post('admin/calendar/events/save', { event: this.event }, function(data) {
+                this.$http.post('api/calendar/events/save', { event: this.event }, function(data) {
 					this.$set('$data.event', data.event);
                     UIkit.notify(vm.$trans('Event saved.'), '');
                 }).error(function(data) {
