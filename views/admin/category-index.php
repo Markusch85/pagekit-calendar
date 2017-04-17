@@ -9,6 +9,7 @@
 				<h2 class="uk-margin-remove">{{ '{1} %count% Category selected|]1,Inf[ %count% Categories selected' | transChoice selected.length {count:selected.length} }}</h2>
 				<div class="uk-margin-left">
 					<ul class="uk-subnav pk-subnav-icon">
+						<li><a class="pk-icon-copy pk-icon-hover" :title="'Copy Categories' | trans" data-uk-tooltip="{delay: 500}" @click="copy" v-confirm="'Copy Categories?' | trans"></a></li>
 						<li><a class="pk-icon-delete pk-icon-hover" :title="'Delete Categories' | trans" data-uk-tooltip="{delay: 500}" @click="remove" v-confirm="'Delete Categories?' | trans"></a></li>
 					</ul>
 				</div>

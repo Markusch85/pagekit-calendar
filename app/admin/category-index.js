@@ -42,6 +42,15 @@ $(function(){
 				}).error(function(data) {
                     UIkit.notify(data, 'danger');
                 });
+            },
+			
+			copy: function() {
+                this.$http.post('api/calendar/categories/copy', { ids: this.selected }, function() {
+                    UIkit.notify(vm.$trans('Categories copied.'));
+					this.load();
+                }).error(function(data) {
+                    UIkit.notify(data, 'danger');
+                });
             }
         }
 

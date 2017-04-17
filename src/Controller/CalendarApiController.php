@@ -60,6 +60,28 @@
 		}
 		
 		/**
+		 * @Access("calendar: manage events")
+		 * @Route("/categories/copy", name="categories/copy")
+		 * @Request({"ids": "array"}, csrf=true)
+		 */
+		public function copyCategoriesAction($ids = [])
+		{
+			foreach ($ids as &$id) {
+				if ($id && $category = Category::find($id)) {
+					$clonedCategory = clone $category;
+					$clonedCategory->id = null;
+					$clonedCategory->category_id = null;
+					$clonedCategory->save();
+				} else {
+					if ($id) {
+						App::abort(404, __('Event not found.'));
+					}
+				}
+			}
+			return ['message' => 'success'];
+		}
+		
+		/**
 		* @Access("category: manage categories")
 		 * @Route("/categories/remove", name="categories/remove")
 		 * @Request({"ids": "array"}, csrf=true)
