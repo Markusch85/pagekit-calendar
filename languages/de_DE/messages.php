@@ -66,6 +66,11 @@ return [
 	'List: Year'																=>	'Liste: Jahr',
 	'Show loading indicator'													=>	'Lade Indikator anzeigen',
 	
+	// Permissions
+	'Manage settings'															=>	'Einstellungen verwalten',
+	'Manage categories'															=>	'Kategorien verwalten',
+	'Manage events'															=>	'Veranstaltungen verwalten',
+	
 	// Calendar
 	'Calendar'																	=>	'Kalender',
 	'Time'																		=>	'Zeit',
