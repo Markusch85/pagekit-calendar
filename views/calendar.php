@@ -2,9 +2,11 @@
 <?php $view->script('moment', 'calendar:assets/js/moment.min.js', 'jquery') ?>
 <?php $view->script('fullCalendar', 'calendar:assets/js/fullcalendar/fullcalendar.min.js') ?>
 <?php $view->script('locale-all', 'calendar:assets/js/fullcalendar/locale-all.js') ?>
+<?php $view->script('loading-indicator', 'calendar:assets/js/jquery.loading-indicator.min.js') ?>
 
 <?php $view->style('fullCalendar', 'calendar:assets/css/fullcalendar.min.css', ['uikit', 'theme'])?>
 <?php $view->style('style', 'calendar:assets/css/style.css', ['uikit'])?>
+<?php $view->style('loading-indicator-style', 'calendar:assets/css/jquery.loading-indicator.css')?>
 
 <div id='calendar-container' class="uk-form">
 	<div id='calendar'></div>

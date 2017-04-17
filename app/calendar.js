@@ -8,8 +8,14 @@ $(function(){
 	        this.$watch('', this.load, {immediate: true});
 	    },
 		  
+		indicator: null,
+		  
         methods: {
 			load: function () {
+				this.indicator = $('body').loadingIndicator({
+					showOnInit: false
+				}).data("loadingIndicator");
+				
 				var locale = $locale.TIMESPAN_FORMATS.localeID;
 				/*var locale = $locale.locale.replace('_', '-');
 				if (moment.locales().indexOf(locale) === -1) {
@@ -49,7 +55,7 @@ $(function(){
 					},
 					defaultView: $config.calendar.views.default,
 					eventClick: self.openEvent,
-					viewRender: self.renderView
+					viewRender: self.renderView,
 				})
 			},
 			
@@ -59,11 +65,13 @@ $(function(){
             },
 			
 			renderView: function(view, element) {
+				this.indicator.show();
 				this.$http.post('api/calendar/events/load', {category: $data.category, start: view.activeRange.start.utc(), end: view.activeRange.end.utc(), readonly: true }, function(data) {
-					$('#calendar').fullCalendar( 'removeEvents');
+					$('#calendar').fullCalendar('removeEvents');
 					$('#calendar').fullCalendar('addEventSource', data.events);
 					$('#calendar').fullCalendar('rerenderEvents');
 					$('#calendar').fullCalendar('refetchEvents');
+					this.indicator.hide();	
 				})
 			}
         }
