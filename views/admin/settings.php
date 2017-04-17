@@ -74,12 +74,26 @@
 					
 					<div class="uk-form-row">
 						<span class="uk-form-label">{{ 'List view' | trans }}</span>
-						<select id="form-category" v-model="config.calendar.views.list">
+						<select id="form-views" v-model="config.calendar.views.list">
 							<option value="none">{{ 'None' | trans }}</option>
 							<option value="listDay">{{ 'Day' | trans }}</option>
 							<option value="listWeek">{{ 'Week' | trans }}</option>
 							<option value="listMonth">{{ 'Month' | trans }}</option>
 							<option value="listYear">{{ 'Year' | trans }}</option>
+						</select>
+					</div>
+					
+					<div class="uk-form-row">
+						<span class="uk-form-label">{{ 'Default view' | trans }}</span>
+						<select id="form-default-view" v-model="config.calendar.views.default">
+							<option value="day">{{ 'Day' | trans }}</option>
+							<option value="week">{{ 'Week' | trans }}</option>
+							<option value="month">{{ 'Month' | trans }}</option>
+							<option value="year">{{ 'Year' | trans }}</option>
+							<option value="listDay">{{ 'List: Day' | trans }}</option>
+							<option value="listWeek">{{ 'List: Week' | trans }}</option>
+							<option value="listMonth">{{ 'List: Month' | trans }}</option>
+							<option value="listYear">{{ 'List: Year' | trans }}</option>
 						</select>
 					</div>
 					

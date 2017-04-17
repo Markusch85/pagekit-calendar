@@ -97,7 +97,8 @@
 					'month' => true,
 					'week' => true,
 					'day' => true,
-					'list' => 'none'
+					'list' => 'none',
+					'default' => 'Month'
 				],
 				'buttons' => [
 					'today' => true,

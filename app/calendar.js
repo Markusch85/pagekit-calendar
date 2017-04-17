@@ -52,7 +52,8 @@ $(function(){
 					themeButtonIcons: {
 						prev: 'uk-icon-arrow-left',
 						next: 'uk-icon-arrow-right'
-					}
+					},
+					defaultView: $config.calendar.views.default
 				})
 			},
 			

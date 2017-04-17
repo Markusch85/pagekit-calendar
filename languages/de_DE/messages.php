@@ -53,8 +53,13 @@ return [
 	'Year'																		=>	'Jahr',
 	'Show today button'															=>	'Heute Button anzeigen',
 	'Show previous/next buttons'												=>	'Weiter/Zurück Buttons anzeigen',
+	'Default view'																=>	'Standard Ansicht',
+	'List: Day'																		=>	'Liste: Tag',
+	'List: Week'																		=>	'Liste: Woche',
+	'List: Month'																		=>	'Liste: Monat',
+	'List: Year'																		=>	'Liste: Jahr',
 	
 	// Calendar
 	'Calendar'																	=>	'Kalender',
-	'Time'																	=>	'Zeit',
+	'Time'																		=>	'Zeit',
 ];

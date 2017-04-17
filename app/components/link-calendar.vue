@@ -32,7 +32,7 @@
 
         created: function () {
             this.$http.get('api/calendar/categories/load').then(function (res) {
-                this.$set('categories', res.data.$data.categories);
+                this.$set('categories', res.data.categories);
             });
         },
 
