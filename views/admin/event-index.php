@@ -40,7 +40,7 @@
 					<td><input type="checkbox" name="id" :value="event.id"></td>
 					<td><a :href="$url.route('admin/calendar/events/edit', { id: event.id })">{{ event.title }}</a></td>
 					<td><time datetime="event.start">{{ event.start | date "short" }}</time></td>
-					<td><time datetime="event.end">{{ event.end | date "short" }}</time></td>
+					<td><time v-if="!event.undefinedEnd" datetime="event.end">{{ event.end | date "short" }}</time></td>
 					<td>
 						<a :href="$url.route('admin/user/edit', { id: event.author_id })">{{ event.author.name }}</a>
 					</td>

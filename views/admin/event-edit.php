@@ -51,6 +51,12 @@
 			</div>
 			
 			<div class="uk-form-row">
+				<div class="uk-form-controls">
+					<label><input type="checkbox" v-model="event.undefinedEnd" value="1"> {{ 'Undefined end' | trans }}</label>
+				</div>
+			</div>
+			
+			<div class="uk-form-row" v-if="!event.undefinedEnd">
 				<label class="uk-form-label">{{ 'End' | trans }}</label>
 				<div class="uk-form-controls">
 					<input-date :datetime.sync="event.end"></input-date>
@@ -62,7 +68,6 @@
 					<label><input type="checkbox" v-model="event.allDay" value="1"> {{ 'Allday event' | trans }}</label>
 				</div>
 			</div>
-
 			
 			<div class="uk-form-row">
                 <label for="form-author" class="uk-form-label">{{ 'Author' | trans }}</label>

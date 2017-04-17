@@ -15,7 +15,10 @@ $(function(){
             save: function() {
 				var start = this.event.start.replace('.000Z', '').replace('+00:00', '');
 				var end = this.event.end.replace('.000Z', '').replace('+00:00', '');
-				if (end <= start) {
+				if (this.event.undefinedEnd) {
+					this.event.end = this.event.start;
+				}
+				if (end < start) {
 					UIkit.notify(vm.$trans('The start date must be before the end date.'));
 				} else {
 					this.$http.post('api/calendar/events/save', { event: this.event }, function(data) {

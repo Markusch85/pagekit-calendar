@@ -57,6 +57,8 @@ class Event implements \JsonSerializable
 		if ($this->category_id)
 		$color = Category::find($this->category_id)->color;
 		
-        return $this->toArray(['color' => $color, 'author' => User::find($this->author_id)]);
+		$undefinedEnd = $this->start == $this->end;
+		
+        return $this->toArray(['color' => $color, 'author' => User::find($this->author_id), 'undefinedEnd' => $undefinedEnd]);
     }
 }
