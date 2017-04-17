@@ -33,6 +33,15 @@ $(function(){
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');
                 });
+            },
+			
+			copy: function() {
+                this.$http.post('api/calendar/events/copy', { ids: this.selected }, function() {
+                    UIkit.notify(vm.$trans('Events copied.'));
+					this.load();
+                }).error(function(data) {
+                    UIkit.notify(data, 'danger');
+                });
             }
         }
 

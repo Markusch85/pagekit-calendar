@@ -10,6 +10,7 @@
 				<h2 class="uk-margin-remove">{{ '{1} %count% Event selected|]1,Inf[ %count% Events selected' | transChoice selected.length {count:selected.length} }}</h2>
 				<div class="uk-margin-left">
 					<ul class="uk-subnav pk-subnav-icon">
+						<li><a class="pk-icon-copy pk-icon-hover" :title="'Copy Events' | trans" data-uk-tooltip="{delay: 500}" @click="copy" v-confirm="'Copy Events?' | trans"></a></li>
 						<li><a class="pk-icon-delete pk-icon-hover" :title="'Delete Events' | trans" data-uk-tooltip="{delay: 500}" @click="remove" v-confirm="'Delete Events?' | trans"></a></li>
 					</ul>
 				</div>

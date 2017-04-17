@@ -149,6 +149,27 @@
 					}
 				}
 			}
-			return ['message' => 'success', 'event' => $event];
+			return ['message' => 'success'];
+		}
+		
+		/**
+		 * @Access("calendar: manage events")
+		 * @Route("/events/copy", name="events/copy")
+		 * @Request({"ids": "array"}, csrf=true)
+		 */
+		public function copyEventsAction($ids = [])
+		{
+			foreach ($ids as &$id) {
+				if ($id && $event = Event::find($id)) {
+					$clonedEvent = clone $event;
+					$clonedEvent->id = null;
+					$clonedEvent->save();
+				} else {
+					if ($id) {
+						App::abort(404, __('Event not found.'));
+					}
+				}
+			}
+			return ['message' => 'success'];
 		}
 	}
