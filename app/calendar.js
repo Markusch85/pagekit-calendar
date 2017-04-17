@@ -4,10 +4,6 @@ $(function(){
 
         el: '#calendar-container',
 
-        data: {
-            category: window.$data.events
-        },
-
 		ready: function () {
 	        this.$watch('', this.load, {immediate: true});
 	    },
@@ -46,22 +42,30 @@ $(function(){
 					locale: locale,
 					timeFormat: $locale.DATETIME_FORMATS.shortTime,
 					timezone: 'local',
-					events: $data.events,
-					eventClick: self.openEvent,
 					theme: false,
 					themeButtonIcons: {
 						prev: 'uk-icon-arrow-left',
 						next: 'uk-icon-arrow-right'
 					},
-					defaultView: $config.calendar.views.default
+					defaultView: $config.calendar.views.default,
+					eventClick: self.openEvent,
+					viewRender: self.renderView
 				})
 			},
 			
             openEvent: function(calEvent, jsEvent, view) {
 				this.$set('$data.event', $.extend({}, calEvent || {}));
 				this.$refs.modal.open();
-            }
-
+            },
+			
+			renderView: function(view, element) {
+				this.$http.post('api/calendar/events/load', {category: $data.category, start: view.activeRange.start.utc(), end: view.activeRange.end.utc(), readonly: true }, function(data) {
+					$('#calendar').fullCalendar( 'removeEvents');
+					$('#calendar').fullCalendar('addEventSource', data.events);
+					$('#calendar').fullCalendar('rerenderEvents');
+					$('#calendar').fullCalendar('refetchEvents');
+				})
+			}
         }
 
     });

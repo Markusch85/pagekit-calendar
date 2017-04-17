@@ -42,12 +42,11 @@
 		 */
 		public function categoryAction($id)
 		{
-			$categories = array_values(Event::query()->where(['category_id' => $id])->get());
+			$events = array_values(Event::query()->where(['category_id' => $id])->get());
 			
-			foreach ($categories as &$category) {
-				$category->description = App::content()->applyPlugins($category->description, ['category' => $category, 'markdown' => true]);
+			foreach ($events as &$event) {
+				$event->description = App::content()->applyPlugins($event->description, ['event' => $event, 'markdown' => true]);
 			}
-			
 			
 		  	return [ 
 				'$view' => [
@@ -55,7 +54,7 @@
 					'name' => 'calendar:views/calendar.php'
 				],
 				'$data' => [
-					'events' => $categories
+					'category' => $id
 				],
 				'$config' =>  App::module('calendar')->config()
 			];
