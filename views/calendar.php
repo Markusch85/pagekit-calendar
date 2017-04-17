@@ -9,6 +9,7 @@
 <?php $view->style('loading-indicator-style', 'calendar:assets/css/jquery.loading-indicator.css')?>
 
 <div id='calendar-container' class="uk-form">
+	<h1>{{ title }}</h1>
 	<div id='calendar'></div>
 
 	<v-modal v-ref:modal>

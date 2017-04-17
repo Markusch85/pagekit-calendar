@@ -90,7 +90,8 @@
 
 		'config' => [
 			'general' => [
-				'title' => 'Calendar'
+				'title' => 'Calendar',
+				'loadingindicator' => true
 			],
 			'calendar' => [
 				'views' => [

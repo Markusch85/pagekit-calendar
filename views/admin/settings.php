@@ -37,6 +37,15 @@
                             </p>
                         </div>
                     </div>
+					
+					<div class="uk-form-row">
+						<span class="uk-form-label">{{ 'Show loading indicator' | trans }}</span>
+						<div class="uk-form-controls uk-form-controls-text">
+							<p class="uk-form-controls-condensed">
+								<input type="checkbox" v-model="config.general.loadingindicator" value="">
+							</p>
+						</div>
+					</div>
                 </li>
                 <li>
                     <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
