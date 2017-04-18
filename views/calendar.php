@@ -20,25 +20,22 @@
 			</div>
 
 			<div class="uk-form-row">
-				<!--<span>On 8.10.2012, 12:00 to 16:00</span>-->
-				<span>On 8.10.2012, 12:00</span>
-				
-				<!--<span>From 8.10.2012, 12:00 to 9.10.2012, 20:00</span>-->
+				<label>{{ 'Start' | trans }}</label>
+				<div>
+					<span v-if="!event.allDay">{{ event.start._i | date "short" }}</span>
+					<span v-else>{{ event.start._i | date }}</span>
+				</div>
 			</div>
 			
-			<div class="uk-form-row">
-				<label>{{ 'Time' | trans }}</label>
-				<div v-if="!event.allDay">
-					<span>{{ event.start._i | date "short" }}</span>
-					<span v-if="event.end"> - {{ event.end._i | date "short" }}</span>
-				</div>
-				<div v-if="event.allDay">
-					<span>{{ event.start._i | date }}</span>
-					<span v-if="!event.undefinedEnd"> - {{ event.end._i | date }}</span>
+			<div class="uk-form-row" v-if="!event.undefinedEnd">
+				<label>{{ 'End' | trans }}</label>
+				<div>
+					<span v-if="!event.allDay">{{ event.end._i | date "short" }}</span>
+					<span v-else>{{ event.end._i | date }}</span>
 				</div>
 			</div>
 				
-			<div class="uk-form-row">
+			<!--<div class="uk-form-row">
 				<div class="uk-form-controls uk-form-controls-text">
 					<p class="uk-form-controls-condensed">
 						<label>
@@ -46,7 +43,7 @@
 						</label>
 					</p>
 				</div>
-			</div>
+			</div>-->
 			
 			<div class="uk-form-row">
 				<div v-html="event.description"></div>
