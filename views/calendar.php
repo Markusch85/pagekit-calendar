@@ -10,7 +10,7 @@
 
 <div id='calendar-container' class="uk-form">
 	<h1>{{ title }}</h1>
-	<div>
+	<div v-if="categories.length > 2">
 		<label class="uk-form-label">{{ 'Category' | trans }}</label>
 		<div class="uk-form-controls">
 			<select name="category" v-model="category" v-on:change="changeCategory">
