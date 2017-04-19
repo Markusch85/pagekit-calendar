@@ -34,16 +34,6 @@
 					<span v-else>{{ event.end._i | date }}</span>
 				</div>
 			</div>
-				
-			<!--<div class="uk-form-row">
-				<div class="uk-form-controls uk-form-controls-text">
-					<p class="uk-form-controls-condensed">
-						<label>
-							<input type="checkbox" v-model="event.allDay" disabled>{{ 'Allday event' | trans }}
-						</label>
-					</p>
-				</div>
-			</div>-->
 			
 			<div class="uk-form-row">
 				<div v-html="event.description"></div>
