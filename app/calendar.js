@@ -9,7 +9,9 @@ $(function(){
 	    },
 		  
 		data: {
-			title: $config.general.title
+			title: $config.general.title,
+			categories: window.$data.categories,
+			category: window.$data.category
 		},
 		  
 		indicator: null,
@@ -63,6 +65,13 @@ $(function(){
 					eventClick: self.openEvent,
 					viewRender: self.renderView,
 				})
+			},
+			
+			changeCategory: function(selectEvent) {
+				$data.category = selectEvent.target.selectedOptions[0].value;
+				// These lines are a workaround for rerendering the view
+				$('#calendar').fullCalendar('prev');
+				$('#calendar').fullCalendar('next');
 			},
 			
             openEvent: function(calEvent, jsEvent, view) {

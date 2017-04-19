@@ -10,6 +10,14 @@
 
 <div id='calendar-container' class="uk-form">
 	<h1>{{ title }}</h1>
+	<div>
+		<label class="uk-form-label">{{ 'Category' | trans }}</label>
+		<div class="uk-form-controls">
+			<select name="category" v-model="category" v-on:change="changeCategory">
+				<option v-for="category in categories" :value="category.id">{{category.name}}</option>
+			</select>
+		</div>
+	</div>
 	<div id='calendar'></div>
 
 	<v-modal v-ref:modal>

@@ -3,6 +3,7 @@
 
 	use Pagekit\Application as App;
 	use MHDev\Calendar\Model\Event;
+	use MHDev\Calendar\Model\Category;
 
 	class SiteController
 	{
@@ -24,13 +25,21 @@
 		 */
 		public function indexAction()
 		{
+			$allCategory = new Category();
+			$allCategory->id = 'all';
+			$allCategory->name = __('All');
+			
+			$categories = array_values(Category::findAll());
+			array_unshift($categories, $allCategory);
+			
 		  	return [ 
 				'$view' => [
 					'title' => __('Calendar'),
 					'name' => 'calendar:views/calendar.php'
 				],
 				'$data' => [
-					'events' => array_values(Event::findAll())
+					'category' => 'all',
+					'categories' => $categories
 				],
 				'$config' =>  App::module('calendar')->config()
 			];
@@ -48,15 +57,23 @@
 				$event->description = App::content()->applyPlugins($event->description, ['event' => $event, 'markdown' => true]);
 			}
 			
+			$allCategory = new Category();
+			$allCategory->id = 'all';
+			$allCategory->name = __('All');
+			
+			$categories = array_values(Category::findAll());
+			array_unshift($categories, $allCategory);
+			
 		  	return [ 
 				'$view' => [
 					'title' => __('Calendar'),
 					'name' => 'calendar:views/calendar.php'
 				],
 				'$data' => [
-					'category' => $id
+					'category' => $id,
+					'categories' => $categories
 				],
-				'$config' =>  App::module('calendar')->config()
+				'$config' =>  App::module('calendar')->config(),
 			];
 		}
 	}
