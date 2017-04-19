@@ -95,10 +95,9 @@
 					<div class="uk-form-row">
 						<span class="uk-form-label">{{ 'Default view' | trans }}</span>
 						<select id="form-default-view" v-model="config.calendar.views.default">
-							<option value="day">{{ 'Day' | trans }}</option>
-							<option value="week">{{ 'Week' | trans }}</option>
+							<option value="agendaDay">{{ 'Day' | trans }}</option>
+							<option value="agendaWeek">{{ 'Week' | trans }}</option>
 							<option value="month">{{ 'Month' | trans }}</option>
-							<option value="year">{{ 'Year' | trans }}</option>
 							<option value="listDay">{{ 'List: Day' | trans }}</option>
 							<option value="listWeek">{{ 'List: Week' | trans }}</option>
 							<option value="listMonth">{{ 'List: Month' | trans }}</option>
