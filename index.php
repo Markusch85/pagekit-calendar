@@ -105,7 +105,8 @@
 					'today' => true,
 					'prevnext' => true,
 					'changecategories' => true
-				]
+				],
+				'pagesize' => 25
 			]
 		],
 		

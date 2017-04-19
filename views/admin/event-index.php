@@ -26,9 +26,9 @@
 			<thead>
 				<tr>
 					<th class="pk-table-width-minimum"><input type="checkbox" v-check-all:selected.literal="input[name=id]" number></th>
-					<th class="pk-table-min-width-200">{{ 'Title' | trans }}</th>
-					<th class="pk-table-min-width">{{ 'Start' | trans }}</th>
-					<th class="pk-table-min-width">{{ 'End' | trans }}</th>
+					<th class="pk-table-min-width-200" v-order:title="config.filter.order">{{ 'Title' | trans }}</th>
+					<th class="pk-table-min-width" v-order:start="config.filter.order">{{ 'Start' | trans }}</th>
+					<th class="pk-table-min-width" v-order:end="config.filter.order">{{ 'End' | trans }}</th>
 					<th class="pk-table-width-100">
 						<span v-if="!canEditAll">{{ 'Author' | trans }}</span>
 						<input-filter :title="$trans('Author')" :value.sync="config.filter.author" :options="authors" v-else></input-filter>
@@ -48,4 +48,6 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<v-pagination :page.sync="config.page" :pages="pages" v-show="pages > 1 || page > 0"></v-pagination>
 </div>
