@@ -122,6 +122,15 @@
 							</p>
 						</div>
 					</div>
+					
+					<div class="uk-form-row">
+						<span class="uk-form-label">{{ 'Allow change between Categories' | trans }}</span>
+						<div class="uk-form-controls uk-form-controls-text">
+							<p class="uk-form-controls-condensed">
+								<input type="checkbox" v-model="config.calendar.buttons.changecategories" value="">
+							</p>
+						</div>
+					</div>
                 </li>
             </ul>
 

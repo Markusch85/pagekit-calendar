@@ -103,7 +103,8 @@
 				],
 				'buttons' => [
 					'today' => true,
-					'prevnext' => true
+					'prevnext' => true,
+					'changecategories' => true
 				]
 			]
 		],

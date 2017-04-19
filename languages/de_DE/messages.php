@@ -66,11 +66,12 @@ return [
 	'List: Month'																=>	'Liste: Monat',
 	'List: Year'																=>	'Liste: Jahr',
 	'Show loading indicator'													=>	'Lade Indikator anzeigen',
+	'Allow change between Categories'											=>	'Wechseln von Kategorien erlauben',
 	
 	// Permissions
 	'Manage settings'															=>	'Einstellungen verwalten',
 	'Manage categories'															=>	'Kategorien verwalten',
-	'Manage events'															=>	'Veranstaltungen verwalten',
+	'Manage events'																=>	'Veranstaltungen verwalten',
 	
 	// Calendar
 	'Calendar'																	=>	'Kalender',

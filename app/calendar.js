@@ -11,7 +11,8 @@ $(function(){
 		data: {
 			title: $config.general.title,
 			categories: window.$data.categories,
-			category: window.$data.category
+			category: window.$data.category,
+			config: $config
 		},
 		  
 		indicator: null,

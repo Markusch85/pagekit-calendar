@@ -9,15 +9,23 @@
 <?php $view->style('loading-indicator-style', 'calendar:assets/css/jquery.loading-indicator.css')?>
 
 <div id='calendar-container' class="uk-form">
-	<h1>{{ title }}</h1>
-	<div v-if="categories.length > 2">
-		<label class="uk-form-label">{{ 'Category' | trans }}</label>
-		<div class="uk-form-controls">
-			<select name="category" v-model="category" v-on:change="changeCategory">
-				<option v-for="category in categories" :value="category.id">{{category.name}}</option>
-			</select>
+	<div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
+		<div data-uk-margin>
+			<h1>{{ title }}</h1>
+		</div>
+		
+		<div v-if="config.calendar.buttons.changecategories">
+			<div v-if="categories.length > 2">
+				<div class="uk-form-controls">
+					<label class="uk-form-label">{{ 'Category' | trans }}</label>
+					<select name="category" v-model="category" v-on:change="changeCategory">
+						<option v-for="category in categories" :value="category.id">{{category.name}}</option>
+					</select>
+				</div>
+			</div>
 		</div>
 	</div>
+	
 	<div id='calendar'></div>
 
 	<v-modal v-ref:modal>
