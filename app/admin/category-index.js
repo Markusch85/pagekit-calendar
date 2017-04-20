@@ -8,7 +8,7 @@ $(function(){
 			return _.merge({
 				entries: [],
 				config: {
-					filter: this.$session.get('categories.filter', {order: 'name asc', limit:2})
+					filter: this.$session.get('categories.filter', {order: 'name asc', limit:25})
 				},
 				selected: [],
 				count: '',

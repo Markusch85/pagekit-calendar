@@ -41,7 +41,7 @@
 				$order = [1 => 'name', 2 => 'asc'];
 			}
 			
-			$limit = 2;//App::module('calendar')->config('calendar.pagesize');
+			$limit = App::module('calendar')->config('calendar.pagesize');
 			$count = $query->count();
 			$pages = ceil($count / $limit);
 			$page  = max(0, min($pages - 1, $page));
