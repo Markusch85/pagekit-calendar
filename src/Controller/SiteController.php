@@ -26,7 +26,7 @@
 		public function indexAction()
 		{
 			$allCategory = new Category();
-			$allCategory->id = 'all';
+			$allCategory->id = '';
 			$allCategory->name = __('All');
 			
 			$categories = array_values(Category::findAll());
@@ -58,7 +58,7 @@
 			}
 			
 			$allCategory = new Category();
-			$allCategory->id = 'all';
+			$allCategory->id = '';
 			$allCategory->name = __('All');
 			
 			$categories = array_values(Category::findAll());

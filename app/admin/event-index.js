@@ -34,7 +34,6 @@ $(function(){
 				},
 				deep: true
 			}
-
 		},
 		
 		computed: {

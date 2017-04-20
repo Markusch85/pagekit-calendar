@@ -4,26 +4,70 @@ $(function(){
 
         el: '#categories',
 
-        data: {
-            entries: [],
-			selected: [],
-			count: ''
+		data: function() {
+			return _.merge({
+				entries: [],
+				config: {
+					filter: this.$session.get('categories.filter', {order: 'name asc', limit:2})
+				},
+				selected: [],
+				count: '',
+				pages: 0
+			}, window.$data);
         },
 		
 		ready: function () {
-	        this.$watch('', this.load, {immediate: true});
+			this.resource = this.$resource('api/calendar/categories/load{/id}');
+	        this.$watch('config.filter', this.load, {immediate: true});
 	    },
+		
+		watch: {
+			'config.filter': {
+				handler: function (filter) {
+					if (this.config.page) {
+						this.config.page = 0;
+					} else {
+						this.load();
+					}
 
+					this.$session.set('categories.filter', filter);
+				},
+				deep: true
+			}
+		},
+
+		computed: {
+			statusOptions: function () {
+
+				var options = _.map(this.$data.statuses, function (status, id) {
+					return { text: status, value: id };
+				});
+
+				return [{ label: this.$trans('Filter by'), options: options }];
+			},
+
+			authors: function() {
+
+				var options = _.map(this.$data.authors, function (author) {
+					return { text: author.username, value: author.user_id };
+				});
+
+				return [{ label: this.$trans('Filter by'), options: options }];
+			}
+		},
+		
         methods: {
 
 			load: function () {
-				this.$http.post('api/calendar/categories/load', function(data) {
+				this.resource.query({ filter: this.config.filter, page: this.config.page }).then(function (res) {
+
+					var data = res.data;
+
 					this.$set('$data.entries', data.categories);
-					this.$set('$data.selected', []);
-					this.$set('$data.count', data.count);
-                }).error(function(data) {
-                    UIkit.notify(data, 'danger');
-                });
+					this.$set('pages', data.pages);
+					this.$set('count', data.count);
+					this.$set('selected', []);
+				});
 			},
 		
             remove: function() {

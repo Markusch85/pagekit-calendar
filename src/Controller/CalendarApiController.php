@@ -8,10 +8,10 @@
 
 	class CalendarApiController
 	{
-		/**
+		/*
 		 * @Route("/categories/load", name="categories/load")
 		 */
-		public function loadCategoriesAction()
+		/*public function loadCategoriesAction()
 		{
 			$categories = Category::query()->related(['author'])->get();
 			
@@ -19,6 +19,36 @@
 				'categories' => $categories,
 				'count' => count($categories)
 			];
+		}*/
+		
+		/**
+		 * @Route("/categories/load", methods="GET")
+		 * @Request({"filter": "array", "page":"int"})
+		 */
+		public function loadCategoriesAction($filter = [], $page = 0) {
+			$query = Category::query();
+			$filter = array_merge(array_fill_keys(['status', 'author', 'order', 'limit'], ''), $filter);
+			
+			extract($filter, EXTR_SKIP);
+						
+			if ($author) {
+				$query->where(function ($query) use ($author) {
+					$query->orWhere(['author_id' => (int) $author]);
+				});
+			}
+			
+			if (!preg_match('/^(name|author)\s(asc|desc)$/i', $order, $order)) {
+				$order = [1 => 'name', 2 => 'asc'];
+			}
+			
+			$limit = 2;//App::module('calendar')->config('calendar.pagesize');
+			$count = $query->count();
+			$pages = ceil($count / $limit);
+			$page  = max(0, min($pages - 1, $page));
+			
+			$categories = array_values($query->offset($page * $limit)->related('author')->limit($limit)->orderBy($order[1], $order[2])->get());
+
+			return compact('categories', 'pages', 'count');
 		}
 		
 		/**
@@ -138,7 +168,7 @@
 			return compact('events', 'pages', 'count');
 		}
 		
-		/**
+		/*
 		 * @Route("/events/load", name="events/load")
 		 * @Request({"category": "int", "start": "string", "end": "string", "readonly" : "boolean"})
 		 */
