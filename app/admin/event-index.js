@@ -60,7 +60,7 @@ $(function(){
         methods: {
 
 			load: function () {
-					this.resource.query({ filter: this.config.filter, page: this.config.page }).then(function (res) {
+				this.resource.query({ filter: this.config.filter, page: this.config.page }).then(function (res) {
 
 					var data = res.data;
 
@@ -69,15 +69,6 @@ $(function(){
 					this.$set('count', data.count);
 					this.$set('selected', []);
 				});
-				
-				
-				/*this.$http.post('api/calendar/events/load', function(data) {
-					this.$set('$data.entries', data.events);
-					this.$set('$data.selected', []);
-					this.$set('$data.count', data.count);
-                }).error(function(data) {
-                    UIkit.notify(data, 'danger');
-                });*/
 			},
 			
             remove: function() {

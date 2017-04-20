@@ -4,16 +4,30 @@ $(function(){
 
         el: '#calendar-container',
 
-		ready: function () {
-	        this.$watch('', this.load, {immediate: true});
-	    },
-		  
 		data: {
 			title: $config.general.title,
 			categories: window.$data.categories,
 			category: window.$data.category,
-			config: $config
+			config: window.$config
+			/*config: {
+				filter: this.$session.get('events.filter')
+			},*/
 		},
+		
+		ready: function () {
+			this.resource = this.$resource('api/calendar/events/load{/id}');
+	        this.$watch('config.filter', this.load, {immediate: true});
+	    },
+		
+		/*watch: {
+			'config.filter': {
+				handler: function (filter) {
+					this.$session.set('events.filter', filter);
+				},
+				deep: true
+			}
+
+		},*/
 		  
 		indicator: null,
 		  
@@ -84,7 +98,13 @@ $(function(){
 				if ($config.general.loadingindicator) {
 					this.indicator.show();
 				}
-				this.$http.post('api/calendar/events/load', {category: $data.category, start: view.activeRange.start.utc(), end: view.activeRange.end.utc(), readonly: true }, function(data) {
+				this.resource.query({ filter: {category: $data.category, start: view.activeRange.start.utc(), end: view.activeRange.end.utc(), readonly: true}, }).then(function (res) {
+
+					var data = res.data;
+
+					//this.$set('$data.entries', data.events);
+					//this.$set('count', data.count);
+					
 					$('#calendar').fullCalendar('removeEvents');
 					$('#calendar').fullCalendar('addEventSource', data.events);
 					$('#calendar').fullCalendar('rerenderEvents');
@@ -92,7 +112,7 @@ $(function(){
 					if ($config.general.loadingindicator) {
 						this.indicator.hide();	
 					}
-				})
+				});
 			}
         }
 
