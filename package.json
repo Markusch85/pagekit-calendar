@@ -1,0 +1,41 @@
+{
+  "targetroot": "",
+  "content": [
+    {
+      "source": "app",
+      "target": "/"
+    },
+    {
+      "source": "assets",
+      "target": "/"
+    },
+    {
+      "source": "languages",
+      "target": "/"
+    },
+    {
+      "source": "src",
+      "target": "/"
+    },
+    {
+      "source": "app/**",
+      "target": "/"
+    },
+    {
+      "source": "views",
+      "target": "/"
+    },
+    {
+      "source": "index.php",
+      "target": "/"
+    },
+    {
+      "source": "scripts.php",
+      "target": "/"
+    },
+    {
+      "source": "composer.json",
+      "target": "/"
+    }
+  ]
+}
