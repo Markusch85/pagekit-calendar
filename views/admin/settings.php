@@ -37,15 +37,15 @@
                             </p>
                         </div>
                     </div>
-					
-					<div class="uk-form-row">
-						<span class="uk-form-label">{{ 'Show loading indicator' | trans }}</span>
-						<div class="uk-form-controls uk-form-controls-text">
-							<p class="uk-form-controls-condensed">
-								<input type="checkbox" v-model="config.general.loadingindicator" value="">
-							</p>
-						</div>
-					</div>
+                    
+                    <div class="uk-form-row">
+                        <span class="uk-form-label">{{ 'Show loading indicator' | trans }}</span>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <p class="uk-form-controls-condensed">
+                                <input type="checkbox" v-model="config.general.loadingindicator" value="">
+                            </p>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
@@ -58,79 +58,79 @@
                     </div>
 
                     <div class="uk-form-row">
-						<span class="uk-form-label">{{ 'Calendar views' | trans }}</span>
-						<div class="uk-form-controls uk-form-controls-text">
-							<p class="uk-form-controls-condensed">
-								<label>
-									<input type="checkbox" v-model="config.calendar.views.month" value="">
-									{{ 'Month' | trans }}
-								</label>
-							</p>
-							<p class="uk-form-controls-condensed">
-								<label>
-									<input type="checkbox" v-model="config.calendar.views.week" value="">
-									{{ 'Week' | trans }}
-								</label>
-							</p>
-							<p class="uk-form-controls-condensed">
-								<label>
-									<input type="checkbox" v-model="config.calendar.views.day" value="">
-									{{ 'Day' | trans }}
-								</label>
-							</p>
-						</div>
+                        <span class="uk-form-label">{{ 'Calendar views' | trans }}</span>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <p class="uk-form-controls-condensed">
+                                <label>
+                                    <input type="checkbox" v-model="config.calendar.views.month" value="">
+                                    {{ 'Month' | trans }}
+                                </label>
+                            </p>
+                            <p class="uk-form-controls-condensed">
+                                <label>
+                                    <input type="checkbox" v-model="config.calendar.views.week" value="">
+                                    {{ 'Week' | trans }}
+                                </label>
+                            </p>
+                            <p class="uk-form-controls-condensed">
+                                <label>
+                                    <input type="checkbox" v-model="config.calendar.views.day" value="">
+                                    {{ 'Day' | trans }}
+                                </label>
+                            </p>
+                        </div>
                     </div>
-					
-					<div class="uk-form-row">
-						<span class="uk-form-label">{{ 'List view' | trans }}</span>
-						<select id="form-views" v-model="config.calendar.views.list">
-							<option value="none">{{ 'None' | trans }}</option>
-							<option value="listDay">{{ 'Day' | trans }}</option>
-							<option value="listWeek">{{ 'Week' | trans }}</option>
-							<option value="listMonth">{{ 'Month' | trans }}</option>
-							<option value="listYear">{{ 'Year' | trans }}</option>
-						</select>
-					</div>
-					
-					<div class="uk-form-row">
-						<span class="uk-form-label">{{ 'Default view' | trans }}</span>
-						<select id="form-default-view" v-model="config.calendar.views.default">
-							<option value="agendaDay">{{ 'Day' | trans }}</option>
-							<option value="agendaWeek">{{ 'Week' | trans }}</option>
-							<option value="month">{{ 'Month' | trans }}</option>
-							<option value="listDay">{{ 'List: Day' | trans }}</option>
-							<option value="listWeek">{{ 'List: Week' | trans }}</option>
-							<option value="listMonth">{{ 'List: Month' | trans }}</option>
-							<option value="listYear">{{ 'List: Year' | trans }}</option>
-						</select>
-					</div>
-					
-					<div class="uk-form-row">
-						<span class="uk-form-label">{{ 'Show today button' | trans }}</span>
-						<div class="uk-form-controls uk-form-controls-text">
-							<p class="uk-form-controls-condensed">
-								<input type="checkbox" v-model="config.calendar.buttons.today" value="">
-							</p>
-						</div>
-					</div>
-					
-					<div class="uk-form-row">
-						<span class="uk-form-label">{{ 'Show previous/next buttons' | trans }}</span>
-						<div class="uk-form-controls uk-form-controls-text">
-							<p class="uk-form-controls-condensed">
-								<input type="checkbox" v-model="config.calendar.buttons.prevnext" value="">
-							</p>
-						</div>
-					</div>
-					
-					<div class="uk-form-row">
-						<span class="uk-form-label">{{ 'Allow change between Categories' | trans }}</span>
-						<div class="uk-form-controls uk-form-controls-text">
-							<p class="uk-form-controls-condensed">
-								<input type="checkbox" v-model="config.calendar.buttons.changecategories" value="">
-							</p>
-						</div>
-					</div>
+                    
+                    <div class="uk-form-row">
+                        <span class="uk-form-label">{{ 'List view' | trans }}</span>
+                        <select id="form-views" v-model="config.calendar.views.list">
+                            <option value="none">{{ 'None' | trans }}</option>
+                            <option value="listDay">{{ 'Day' | trans }}</option>
+                            <option value="listWeek">{{ 'Week' | trans }}</option>
+                            <option value="listMonth">{{ 'Month' | trans }}</option>
+                            <option value="listYear">{{ 'Year' | trans }}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="uk-form-row">
+                        <span class="uk-form-label">{{ 'Default view' | trans }}</span>
+                        <select id="form-default-view" v-model="config.calendar.views.default">
+                            <option value="agendaDay">{{ 'Day' | trans }}</option>
+                            <option value="agendaWeek">{{ 'Week' | trans }}</option>
+                            <option value="month">{{ 'Month' | trans }}</option>
+                            <option value="listDay">{{ 'List: Day' | trans }}</option>
+                            <option value="listWeek">{{ 'List: Week' | trans }}</option>
+                            <option value="listMonth">{{ 'List: Month' | trans }}</option>
+                            <option value="listYear">{{ 'List: Year' | trans }}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="uk-form-row">
+                        <span class="uk-form-label">{{ 'Show today button' | trans }}</span>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <p class="uk-form-controls-condensed">
+                                <input type="checkbox" v-model="config.calendar.buttons.today" value="">
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-form-row">
+                        <span class="uk-form-label">{{ 'Show previous/next buttons' | trans }}</span>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <p class="uk-form-controls-condensed">
+                                <input type="checkbox" v-model="config.calendar.buttons.prevnext" value="">
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-form-row">
+                        <span class="uk-form-label">{{ 'Allow change between Categories' | trans }}</span>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <p class="uk-form-controls-condensed">
+                                <input type="checkbox" v-model="config.calendar.buttons.changecategories" value="">
+                            </p>
+                        </div>
+                    </div>
                 </li>
             </ul>
 

@@ -22,24 +22,24 @@ class Event implements \JsonSerializable
 
     /** @Column(type="datetime") */
     public $start;
-	
-	/** @Column(type="datetime") */
+    
+    /** @Column(type="datetime") */
     public $end;
 
     /** @Column(type="text") */
     public $description = '';
-	
-	/** @Column(type="boolean") */
-	public $allDay;
-	
-	/** @Column(type="integer") */
-	public $category_id;
-	
-	/**
+    
+    /** @Column(type="boolean") */
+    public $allDay;
+    
+    /** @Column(type="integer") */
+    public $category_id;
+    
+    /**
      * @BelongsTo(targetEntity="MHDev\Calendar\Model\Category", keyFrom="category_id")
      */
     public $category;
-	
+    
     /** @Column(type="integer") */
     public $author_id;
 
@@ -47,18 +47,18 @@ class Event implements \JsonSerializable
      * @BelongsTo(targetEntity="Pagekit\User\Model\User", keyFrom="author_id")
      */
     public $author;
-	
-	/**
+    
+    /**
      * {@inheritdoc}
      */
     public function jsonSerialize()
     {
-		$color = null;
-		if ($this->category_id)
-		$color = Category::find($this->category_id)->color;
-		
-		$undefinedEnd = $this->start == $this->end;
-		
+        $color = null;
+        if ($this->category_id)
+        $color = Category::find($this->category_id)->color;
+        
+        $undefinedEnd = $this->start == $this->end;
+        
         return $this->toArray(['color' => $color, 'author' => User::find($this->author_id), 'undefinedEnd' => $undefinedEnd]);
     }
 }

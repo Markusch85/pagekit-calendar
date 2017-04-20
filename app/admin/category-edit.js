@@ -6,7 +6,7 @@ $(function(){
 
         data: {
             category: window.$data.category,
-			authors: window.$data.authors
+            authors: window.$data.authors
         },
 
         methods: {
@@ -14,7 +14,7 @@ $(function(){
             save: function() {
 
                 this.$http.post('api/calendar/categories/save', { category: this.category }, function(data) {
-					this.$set('$data.category', data.category);
+                    this.$set('$data.category', data.category);
                     UIkit.notify(vm.$trans('Category saved.'));
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');

@@ -23,11 +23,11 @@ class Category
     /** @Column */
     public $color;
 
-	/**
-	 * @HasMany(targetEntity="Event", keyFrom="id", keyTo="event_id")
-	 */
-	public $events;
-	
+    /**
+     * @HasMany(targetEntity="Event", keyFrom="id", keyTo="event_id")
+     */
+    public $events;
+    
     /** @Column(type="integer") */
     public $author_id;
 
@@ -36,11 +36,11 @@ class Category
      */
     public $author;
 
-	/**
+    /**
      * {@inheritdoc}
      */
     public function jsonSerialize()
-    {		
+    {        
         return $this->toArray(['author' => User::find($this->author_id)]);
     }
 }
