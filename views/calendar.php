@@ -6,7 +6,7 @@
 
 <?php $view->style('fullCalendar', 'calendar:assets/css/fullcalendar.min.css', ['uikit', 'theme'])?>
 <?php $view->style('style', 'calendar:assets/css/style.css', ['uikit'])?>
-<?php $view->style('loading-indicator-style', 'calendar:assets/css/jquery.loading-indicator.css')?>
+<?php $view->style('loading-indicator-style', 'calendar:assets/css/jquery.loading-indicator.min.css')?>
 
 <div id='calendar-container' class="uk-form">
 	<div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
