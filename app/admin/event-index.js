@@ -17,7 +17,7 @@ $(function(){
         },
 
         ready: function () {
-            this.resource = this.$resource('api/calendar/events/load{/id}');
+            this.resource = this.$resource('api/calendar/event{/id}');
             this.$watch('config.page', this.load, {immediate: true});
         },
         
@@ -80,11 +80,13 @@ $(function(){
             },
             
             copy: function() {
-                this.$http.post('api/calendar/events/copy', { ids: this.selected }, function() {
-                    UIkit.notify(vm.$trans('Events copied.'));
+                if (!this.selected.length) {
+                    return;
+                }
+
+                this.resource.save({ id: 'copy' }, { ids: this.selected }).then(function () {
                     this.load();
-                }).error(function(data) {
-                    UIkit.notify(data, 'danger');
+                    this.$notify('Events copied.');
                 });
             }
         }

@@ -4,20 +4,52 @@ $(function(){
 
         el: '#category',
 
-        data: {
-            category: window.$data.category,
-            authors: window.$data.authors
+        data: function () {
+            return {
+                data: window.$data,
+                category: window.$data.category,
+                authors: window.$data.authors
+            }
         },
 
+        created: function () {
+            var sections = [];
+
+            _.forIn(this.$options.components, function (component, name) {
+
+                var options = component.options || {};
+
+                if (options.section) {
+                    sections.push(_.extend({name: name, priority: 0}, options.section));
+                }
+
+            });
+
+            this.$set('sections', _.sortBy(sections, 'priority'));
+
+            this.resource = this.$resource('api/calendar/category{/id}');
+        },
+        
         methods: {
+            save: function () {
+                var data = {category: this.category, id: this.category.id};
 
-            save: function() {
+                this.$broadcast('save', data);
 
-                this.$http.post('api/calendar/categories/save', { category: this.category }, function(data) {
-                    this.$set('$data.category', data.category);
-                    UIkit.notify(vm.$trans('Category saved.'));
-                }).error(function(data) {
-                    UIkit.notify(data, 'danger');
+                this.resource.save({id: this.category.id}, data).then(function (res) {
+
+                    var data = res.data;
+
+                    if (!this.category.id) {
+                        window.history.replaceState({}, '', this.$url.route('admin/calendar/category/edit', {id: data.category.id}))
+                    }
+
+                    this.$set('category', data.category);
+
+                    this.$notify('Category saved.');
+
+                }, function (res) {
+                    this.$notify(res.data, 'danger');
                 });
             }
 

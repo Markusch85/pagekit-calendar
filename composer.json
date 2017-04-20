@@ -3,7 +3,7 @@
     "version": "0.3.0-alpha",
     "type": "pagekit-extension",
     "title": "Calendar",
-	"license": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "MH Development",
@@ -11,7 +11,7 @@
             "homepage": "http://mh-dev.net"
         }
     ],
-	"extra": {
+    "extra": {
        "scripts": "scripts.php"
     }
 }

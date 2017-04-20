@@ -15,7 +15,7 @@ $(function(){
         },
         
         ready: function () {
-            this.resource = this.$resource('api/calendar/events/load{/id}');
+            this.resource = this.$resource('api/calendar/event{/id}');
             this.$watch('config.filter', this.load, {immediate: true});
         },
         

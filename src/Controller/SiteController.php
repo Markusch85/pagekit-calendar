@@ -38,7 +38,7 @@
                     'name' => 'calendar:views/calendar.php'
                 ],
                 '$data' => [
-                    'category' => 'all',
+                    'category' => '',
                     'categories' => $categories
                 ],
                 '$config' =>  App::module('calendar')->config()
