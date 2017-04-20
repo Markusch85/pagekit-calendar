@@ -8,19 +8,6 @@
 
     class CalendarApiController
     {
-        /*
-         * @Route("/categories/load", name="categories/load")
-         */
-        /*public function loadCategoriesAction()
-        {
-            $categories = Category::query()->related(['author'])->get();
-            
-            return [
-                'categories' => $categories,
-                'count' => count($categories)
-            ];
-        }*/
-        
         /**
          * @Route("/categories/load", methods="GET")
          * @Request({"filter": "array", "page":"int"})
@@ -167,42 +154,6 @@
 
             return compact('events', 'pages', 'count');
         }
-        
-        /*
-         * @Route("/events/load", name="events/load")
-         * @Request({"category": "int", "start": "string", "end": "string", "readonly" : "boolean"})
-         */
-        /*public function loadEventsAction($category = 0, $start = null, $end = null, $readonly = false)
-        {
-            if (!$category) {
-                if ($start == null || $end == null) {
-                    $events = Event::query()->related(['author'])->get();
-                } else {
-                    $events = Event::where('start >= ? and end <= ?', [new \DateTime($start), new \DateTime($end)])->related(['author'])->get();
-                }
-            } else {
-                if ($start == null || $end == null) {
-                    $events = Event::query()->where(['category_id' => $category])->related(['author'])->get();
-                } else {
-                    $events = Event::where('category_id = ? and start >= ? and end <= ?', [$category, new \DateTime($start), new \DateTime($end)])->related(['author'])->get();
-                }
-            }
-            
-            if ($readonly) {
-                foreach ($events as &$event) {
-                    $event->description = App::content()->applyPlugins($event->description, ['event' => $event, 'markdown' => true]);
-                }
-                
-                $events = array_values($events);
-            }
-            
-            return [
-                'events' => $events,
-                'count' => count($events),
-                'start' => new \DateTime($start),
-                'end' => new \DateTime($end)
-            ];
-        }*/
         
         /**
          * @Access("calendar: manage events")
