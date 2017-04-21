@@ -7,8 +7,8 @@
 
     class SiteController
     {
-		const CALENDAR = 'calendar';
-		
+        const CALENDAR = 'calendar';
+        
          /**
          * @var Module
          */

@@ -11,10 +11,10 @@
      */
     class CalendarController
     {        
-		const VIEW = '$view';
-		const TITLE = 'title';
-		const DATA = '$data';
-		
+        const VIEW = '$view';
+        const TITLE = 'title';
+        const DATA = '$data';
+        
         /**
          * @Access("system: access settings")
          */
@@ -27,8 +27,8 @@
                 ]
             ];
         }
-		
-		/**
+        
+        /**
          * @Route("/categories/edit", name="categories/edit")
          * @Access("calendar: manage categories")
          * @Request({"id": "int"})
