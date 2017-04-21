@@ -78,7 +78,7 @@ $(function(){
                 if ($config.general.loadingindicator) {
                     this.indicator.show();
                 }
-                this.resource.query({ filter: {category: $data.category, start: view.activeRange.start.utc(), end: view.activeRange.end.utc(), readonly: true, order: 'start asc', limit:null} }).then(function (res) {
+                this.resource.query({ filter: {category: $data.category, start: view.activeRange.start.utc(), end: view.activeRange.end.utc(), readonly: true, order: 'start asc', nolimit:true} }).then(function (res) {
 
                     var data = res.data;
 
