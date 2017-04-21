@@ -14,7 +14,7 @@
                     $table->addColumn('author_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
                     $table->setPrimaryKey(['id']);
                 });
-            };
+            }
             if ($util->tableExists('@calendar_events') === false) {
                 $util->createTable('@calendar_events', function ($table) {
                     $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
