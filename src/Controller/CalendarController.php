@@ -11,19 +11,24 @@
      */
     class CalendarController
     {        
+		const VIEW = '$view';
+		const TITLE = 'title';
+		const DATA = '$data';
+		
         /**
          * @Access("system: access settings")
          */
         public function categoriesAction()
         {
             return [
-                '$view' => [
-                    'title' => __('Calendar Categories'),
+                self::VIEW => [
+                    self::TITLE => __('Calendar Categories'),
                     'name'  => 'calendar:views/admin/category-index.php',
                 ]
             ];
         }
-/**
+		
+		/**
          * @Route("/categories/edit", name="categories/edit")
          * @Access("calendar: manage categories")
          * @Request({"id": "int"})
@@ -55,11 +60,11 @@
                 ->fetchAll();
             
             return [
-                '$view' => [
-                    'title' => $id ? __('Edit Category') : __('Add Category'),
+                self::VIEW => [
+                    self::TITLE => $id ? __('Edit Category') : __('Add Category'),
                     'name'  => 'calendar:views/admin/category-edit.php',
                 ],
-                '$data' => [
+                self::DATA => [
                     'category' => $category,
                     'authors' => $authors
                 ]
@@ -72,8 +77,8 @@
         public function eventsAction()
         {
             return [
-                '$view' => [
-                    'title' => __('Calendar Events'),
+                self::VIEW => [
+                    self::TITLE => __('Calendar Events'),
                     'name'  => 'calendar:views/admin/event-index.php',
                 ]
             ];
@@ -118,11 +123,11 @@
                 ->fetchAll();
                         
             return [
-                '$view' => [
-                    'title' => $id ? __('Edit Event') : __('Add Event'),
+                self::VIEW => [
+                    self::TITLE => $id ? __('Edit Event') : __('Add Event'),
                     'name'  => 'calendar:views/admin/event-edit.php',
                 ],
-                '$data' => [
+                self::DATA => [
                     'event' => $event,
                     'authors' => $authors,
                     'categories' => array_values(Category::findAll())
@@ -136,11 +141,11 @@
         public function settingsAction()
         {
             return [
-                '$view' => [
-                    'title' => __('Calendar Settings'),
+                self::VIEW => [
+                    self::TITLE => __('Calendar Settings'),
                     'name'  => 'calendar:views/admin/settings.php',
                 ],
-                '$data' => [
+                self::DATA => [
                     'config' => App::module('calendar')->config(),
                 ],
             ];

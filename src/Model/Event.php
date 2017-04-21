@@ -55,9 +55,9 @@ class Event implements \JsonSerializable
     {
         $color = null;
         if ($this->category_id)
-		{
-			$color = Category::find($this->category_id)->color;
-		}
+        {
+            $color = Category::find($this->category_id)->color;
+        }
         
         $undefinedEnd = $this->start == $this->end;
         

@@ -1,14 +1,14 @@
 $(function(){
-
     new Vue({
-
         el: '#calendar-container',
 
         data: {
             title: $config.general.title,
             categories: window.$data.categories,
             category: window.$data.category,
-            config: window.$config
+            config: window.$config,
+            count: null,
+            entries: null
         },
         
         ready: function () {
@@ -27,18 +27,12 @@ $(function(){
                 }
                 
                 var locale = $locale.TIMESPAN_FORMATS.localeID;
-                /*var locale = $locale.locale.replace('_', '-');
-                if (moment.locales().indexOf(locale) === -1) {
-                    locale = locale.split('-')[0];
-                }*/
-
                 var buttons = '';
 
                 if ($config.calendar !== undefined && $config.calendar.buttons !== undefined) {
                     buttons += $config.calendar.buttons.today ? 'today ' : '';
                     buttons += $config.calendar.buttons.prevnext ? 'prev,next ' : '';
                 }
-
                 if ($config.calendar !== undefined && $config.calendar.views !== undefined) {
                     buttons += $config.calendar.views.month ? 'month ' : '';
                     buttons += $config.calendar.views.week ? 'agendaWeek ' : '';
@@ -48,7 +42,6 @@ $(function(){
 
                 var self = this;
                 
-                // page is now ready, initialize the calendar...    
                 $('#calendar').fullCalendar({
                     header: {
                         left:   'title',
@@ -89,8 +82,8 @@ $(function(){
 
                     var data = res.data;
 
-                    //this.$set('$data.entries', data.events);
-                    //this.$set('count', data.count);
+                    this.$set('$data.entries', data.events);
+                    this.$set('count', data.count);
                     
                     $('#calendar').fullCalendar('removeEvents');
                     $('#calendar').fullCalendar('addEventSource', data.events);
@@ -102,7 +95,5 @@ $(function(){
                 });
             }
         }
-
     });
-
 });

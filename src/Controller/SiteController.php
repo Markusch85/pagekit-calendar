@@ -7,6 +7,8 @@
 
     class SiteController
     {
+		const CALENDAR = 'calendar';
+		
          /**
          * @var Module
          */
@@ -17,7 +19,7 @@
          */
         public function __construct()
         {
-            $this->calendar = App::module('calendar');
+            $this->calendar = App::module(self::CALENDAR);
         }
     
         /**
@@ -41,7 +43,7 @@
                     'category' => '',
                     'categories' => $categories
                 ],
-                '$config' =>  App::module('calendar')->config()
+                '$config' =>  App::module(self::CALENDAR)->config()
             ];
         }
         
@@ -73,7 +75,7 @@
                     'category' => $id,
                     'categories' => $categories
                 ],
-                '$config' =>  App::module('calendar')->config(),
+                '$config' =>  App::module(self::CALENDAR)->config(),
             ];
         }
     }

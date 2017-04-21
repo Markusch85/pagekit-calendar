@@ -7,23 +7,23 @@
 }
 
 .ui-icon-uk-icon-arrow-left:before {
-    content: "\f060"
+    content: "\f060";
 }
 
 .ui-icon-uk-icon-arrow-right:before {
-	content: "\f061"
+    content: "\f061";
 }
 
 .fc-icon {
-	height: 2em;
+    height: 2em;
     line-height: 2em;
 }
 
 .fc-icon:after {
-	font-weight: 100;
+    font-weight: 100;
     font-size: 2em;
     top: 0;
-	font-family: "FontAwesome";
+    font-family: "FontAwesome";
 }
 
 .fc-icon-left-single-arrow:after {
