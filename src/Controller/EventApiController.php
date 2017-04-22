@@ -11,6 +11,12 @@
      */
     class EventApiController
     {
+        const AUTHOR = 'author';
+        const ERROR_EVENT_NOT_FOUND = 'Event not found.';
+        const PERMISSION_MANAGE_EVENTS = 'calendar: manage events';
+        const SUCCESS = 'success';
+        const MESSAGE = 'message';
+        
         /**
          * @Route("/", methods="GET")
          * @Request({"filter": "array", "page":"int"})
@@ -18,7 +24,7 @@
         public function indexAction($filter = [], $page = 0)
         {
             $query = Event::query();
-            $filter = array_merge(array_fill_keys(['status', 'author', 'category', 'order', 'limit', 'nolimit'], ''), $filter);
+            $filter = array_merge(array_fill_keys(['status', self::AUTHOR, 'category', 'order', 'limit', 'nolimit'], ''), $filter);
             
             extract($filter, EXTR_SKIP);
             
@@ -46,7 +52,7 @@
             $pages = ceil($count / $limit);
             $page  = max(0, min($pages - 1, $page));
             
-            $events = array_values($query->offset($page * $limit)->related('author')->limit($limit)->orderBy($order[1], $order[2])->get());
+            $events = array_values($query->offset($page * $limit)->related(self::AUTHOR)->limit($limit)->orderBy($order[1], $order[2])->get());
 
             return compact('events', 'pages', 'count');
         }
@@ -56,7 +62,7 @@
          */
         public function getAction($id)
         {
-            return Event::where(compact('id'))->related('author', 'category')->first();
+            return Event::where(compact('id'))->related(self::AUTHOR, 'category')->first();
         }
         
         /**
@@ -68,19 +74,19 @@
         {
             if (!$id || !$event = Event::find($id)) {
                 if ($id) {
-                    App::abort(404, __('Event not found.'));
+                    App::abort(404, __(self::ERROR_EVENT_NOT_FOUND));
                 }
                 
                 $event = Event::create();
             }
             
-            if (!App::user()->hasAccess('calendar: manage events')) {
+            if (!App::user()->hasAccess(self::PERMISSION_MANAGE_EVENTS)) {
                 App::abort(400, __('Access denied.'));
             }
                 
             $event = Event::create();
             $event->save($data);
-            return ['message' => 'success', 'event' => $event];
+            return [self::MESSAGE => self::SUCCESS, 'event' => $event];
         }
         
          /**
@@ -90,7 +96,7 @@
         public function copyAction($ids = [])
         {
             foreach ($ids as &$id) {
-                if(!App::user()->hasAccess('calendar: manage events')) {
+                if(!App::user()->hasAccess(self::PERMISSION_MANAGE_EVENTS)) {
                     continue;
                 }
                 
@@ -100,17 +106,17 @@
                     $event->save();
                 }
             }
-            return ['message' => 'success'];
+            return [self::MESSAGE => self::SUCCESS];
         }
 
         /**
          * @Route("/{id}", methods="DELETE", requirements={"id"="\d+"})
-         * @Request({"id": "int"}, csrf=true)
+         * @Request({"ids": "array"}, csrf=true)
          */
-        public function deleteAction($id)
+        public function deleteAction($ids)
         {
             foreach ($ids as &$id) {
-                if(!App::user()->hasAccess('calendar: manage events')) {
+                if(!App::user()->hasAccess(self::PERMISSION_MANAGE_EVENTS)) {
                     App::abort(400, __('Access denied.'));
                 }
                 
@@ -118,10 +124,10 @@
                     $event->delete();
                 } else {
                     if ($id) {
-                        App::abort(404, __('Event not found.'));
+                        App::abort(404, __(self::ERROR_EVENT_NOT_FOUND));
                     }
                 }
             }
-            return ['message' => 'success'];
+            return [self::MESSAGE => self::SUCCESS];
         }
     }

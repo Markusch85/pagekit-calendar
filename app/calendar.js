@@ -69,12 +69,12 @@ $(function(){
                 $('#calendar').fullCalendar('next');
             },
             
-            openEvent: function(calEvent, jsEvent, view) {
+            openEvent: function(calEvent) {
                 this.$set('$data.event', $.extend({}, calEvent || {}));
                 this.$refs.modal.open();
             },
             
-            renderView: function(view, element) {
+            renderView: function(view) {
                 if ($config.general.loadingindicator) {
                     this.indicator.show();
                 }

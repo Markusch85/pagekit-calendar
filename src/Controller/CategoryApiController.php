@@ -10,6 +10,12 @@
      */
     class CategoryApiController
     {
+        const AUTHOR = 'author';
+        const ERROR_CATEGORY_NOT_FOUND = 'Category not found.';
+        const PERMISSION_MANAGE_CATEGORIES = 'calendar: manage categories';
+        const SUCCESS = 'success';
+        const MESSAGE = 'message';
+        
         /**
          * @Route("/", methods="GET")
          * @Request({"filter": "array", "page":"int"})
@@ -17,7 +23,7 @@
         public function indexAction($filter = [], $page = 0)
         {
             $query = Category::query();
-            $filter = array_merge(array_fill_keys(['status', 'author', 'order', 'limit'], ''), $filter);
+            $filter = array_merge(array_fill_keys(['status', self::AUTHOR, 'order', 'limit'], ''), $filter);
             
             extract($filter, EXTR_SKIP);
                         
@@ -36,7 +42,7 @@
             $pages = ceil($count / $limit);
             $page  = max(0, min($pages - 1, $page));
             
-            $categories = array_values($query->offset($page * $limit)->related('author')->limit($limit)->orderBy($order[1], $order[2])->get());
+            $categories = array_values($query->offset($page * $limit)->related(self::AUTHOR)->limit($limit)->orderBy($order[1], $order[2])->get());
 
             return compact('categories', 'pages', 'count');
         }
@@ -46,7 +52,7 @@
          */
         public function getAction($id)
         {
-            return Category::where(compact('id'))->related('author')->first();
+            return Category::where(compact('id'))->related(self::AUTHOR)->first();
         }
         
         /**
@@ -63,12 +69,12 @@
                 $category = Category::create();
             }
             
-            if (!App::user()->hasAccess('calendar: manage categories')) {
+            if (!App::user()->hasAccess(self::PERMISSION_MANAGE_CATEGORIES)) {
                 App::abort(400, __('Access denied.'));
             }
             
             $category->save($data);
-            return ['message' => 'success', 'category' => $category];
+            return [self::MESSAGE => self::SUCCESS, 'category' => $category];
         }
         
          /**
@@ -78,7 +84,7 @@
         public function copyAction($ids = [])
         {
             foreach ($ids as &$id) {
-                if(!App::user()->hasAccess('calendar: manage categories')) {
+                if(!App::user()->hasAccess(self::PERMISSION_MANAGE_CATEGORIES)) {
                     continue;
                 }
                 
@@ -89,21 +95,21 @@
                     $category->save();
                 } else {
                     if ($id) {
-                        App::abort(404, __('Category not found.'));
+                        App::abort(404, __(self::ERROR_CATEGORY_NOT_FOUND));
                     }
                 }
             }
-            return ['message' => 'success'];
+            return [self::MESSAGE => self::SUCCESS];
         }
 
         /**
          * @Route("/{id}", methods="DELETE", requirements={"id"="\d+"})
-         * @Request({"id": "int"}, csrf=true)
+         * @Request({"ids": "array"}, csrf=true)
          */
-        public function deleteAction($id)
+        public function deleteAction($ids = [])
         {
             foreach ($ids as &$id) {
-                if(!App::user()->hasAccess('calendar: manage categories')) {
+                if(!App::user()->hasAccess(self::PERMISSION_MANAGE_CATEGORIES)) {
                     App::abort(400, __('Access denied.'));
                 }
                 
@@ -111,10 +117,10 @@
                     $category->delete();
                 } else {
                     if ($id) {
-                        App::abort(404, __('Category not found.'));
+                        App::abort(404, __(self::ERROR_CATEGORY_NOT_FOUND));
                     }
                 }
             }
-            return ['message' => 'success'];
+            return [self::MESSAGE => self::SUCCESS];
         }
     }

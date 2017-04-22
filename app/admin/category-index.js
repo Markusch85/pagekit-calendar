@@ -71,7 +71,7 @@ $(function(){
             },
         
             remove: function() {
-                $hasCategories = false;
+                var $hasCategories = false;
                 this.$http.post('api/calendar/categories/has-events', { categories: this.selected }, function(data) {
                     if (data.hasEvents) {
                         UIkit.notify(vm.$trans('One of the selected categories has already events.'));
