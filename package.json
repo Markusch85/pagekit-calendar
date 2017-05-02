@@ -2,28 +2,24 @@
   "targetroot": "",
   "content": [
     {
-      "source": "app",
-      "target": "/"
+      "source": "assets/**",
+      "target": "/assets"
     },
     {
-      "source": "assets",
-      "target": "/"
+      "source": "languages/**",
+      "target": "/languages"
     },
     {
-      "source": "languages",
-      "target": "/"
-    },
-    {
-      "source": "src",
-      "target": "/"
+      "source": "src/**",
+      "target": "/src"
     },
     {
       "source": "app/**",
-      "target": "/"
+      "target": "/app"
     },
     {
-      "source": "views",
-      "target": "/"
+      "source": "views/**",
+      "target": "/views"
     },
     {
       "source": "index.php",
