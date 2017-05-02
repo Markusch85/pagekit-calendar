@@ -11,7 +11,7 @@
     },
      {
       "source": "assets/fonts/*.*",
-      "target": "/assets"
+      "target": "/assets/fonts"
     },
      {
       "source": "assets/js/*.*",
@@ -27,7 +27,7 @@
     },
     {
       "source": "languages/de_DE/*.*",
-      "target": "/languagesde_DE"
+      "target": "/languages/de_DE"
     },
     {
       "source": "src/*.*",
@@ -54,7 +54,7 @@
       "target": "/app/bundle"
     },
     {
-      "source": "app//components/*.*",
+      "source": "app/components/*.*",
       "target": "/app/components"
     },
     {
