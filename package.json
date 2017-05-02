@@ -2,24 +2,68 @@
   "targetroot": "",
   "content": [
     {
-      "source": "assets/**",
+      "source": "assets/*.*",
       "target": "/assets"
     },
+     {
+      "source": "assets/css/*.*",
+      "target": "/assets/css"
+    },
+     {
+      "source": "assets/fonts/*.*",
+      "target": "/assets"
+    },
+     {
+      "source": "assets/js/*.*",
+      "target": "/assets/js"
+    },
+     {
+      "source": "assets/js/*.*",
+      "target": "/assets/js/fullcalendar"
+    },
     {
-      "source": "languages/**",
+      "source": "languages/*.*",
       "target": "/languages"
     },
     {
-      "source": "src/**",
-      "target": "/src"
+      "source": "languages/de_DE/*.*",
+      "target": "/languagesde_DE"
     },
     {
-      "source": "app/**",
+      "source": "src/*.*",
+      "target": "/src"
+    },
+   {
+      "source": "src/Controller/*.*",
+      "target": "/src/Controller"
+    },
+    {
+      "source": "src/Model/*.*",
+      "target": "/src/Model"
+    },
+    {
+      "source": "app/*.*",
       "target": "/app"
     },
     {
-      "source": "views/**",
+      "source": "app/admin/*.*",
+      "target": "/app/admin"
+    },
+    {
+      "source": "app/bundle/*.*",
+      "target": "/app/bundle"
+    },
+    {
+      "source": "app//components/*.*",
+      "target": "/app/components"
+    },
+    {
+      "source": "views/*.*",
       "target": "/views"
+    },
+    {
+      "source": "views/admin/*.*",
+      "target": "/views/admin"
     },
     {
       "source": "index.php",
