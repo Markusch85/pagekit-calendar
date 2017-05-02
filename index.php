@@ -1,9 +1,5 @@
 <?php
 
-    use Pagekit\Application;
-
-    // packages/mhdev/calendar/index.php
-
     return [
 
         'name' => 'calendar',

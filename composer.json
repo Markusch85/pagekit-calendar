@@ -1,14 +1,16 @@
 {
     "name": "mhdev/calendar",
-    "version": "0.3.0-alpha",
+    "version": "1.0.0-alpha-3",
     "type": "pagekit-extension",
     "title": "Calendar",
     "license": "MIT",
+    "copyright": "(c) 2017 MH Development",
+    "description" : "Calendar extension for Pagekit",
     "authors": [
         {
-            "name": "MH Development",
+            "name": "Matthias Heilhecker",
             "email": "support@mh-dev.net",
-            "homepage": "http://mh-dev.net"
+            "homepage": "http://www.mh-dev.net"
         }
     ],
     "extra": {
