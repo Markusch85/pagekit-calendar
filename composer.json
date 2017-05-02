@@ -4,11 +4,12 @@
     "type": "pagekit-extension",
     "title": "Calendar",
     "license": "MIT",
+    "copyright": "(c) 2017 MH Development",
     "authors": [
         {
             "name": "MH Development",
             "email": "support@mh-dev.net",
-            "homepage": "http://mh-dev.net"
+            "homepage": "http://www.mh-dev.net"
         }
     ],
     "extra": {
