@@ -1,6 +1,6 @@
 {
     "name": "mhdev/calendar",
-    "version": "1.0.0-alpha-4",
+    "version": "1.0.0-alpha6",
     "type": "pagekit-extension",
     "title": "Calendar",
     "license": "MIT",
