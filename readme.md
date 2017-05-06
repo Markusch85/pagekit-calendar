@@ -6,7 +6,8 @@ This extension is Open Source. So, anyone who want to implement some features or
 - First, fork this repository
 - Choose one Issue you want to solve or create one
 - Create a Branch for this issue
-- After imeplenting, create a Pull Request
+- After imeplenting, commit your files by referencing the issue id
+- Create a Pull Request
 
 I will merge your Pull Request.
 
