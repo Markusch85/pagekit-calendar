@@ -71,11 +71,13 @@
             },
             
             remove: function() {
-                this.$http.post('api/calendar/events/remove', { ids: this.selected }, function() {
-                    UIkit.notify(vm.$trans('Events deleted.'));
+                if (!this.selected.length) {
+                    return;
+                }
+                
+                this.resource.delete({ id: 'bulk' }, { ids: this.selected }).then(function () {
                     this.load();
-                }).error(function(data) {
-                    UIkit.notify(data, 'danger');
+                    this.$notify('Events deleted.');
                 });
             },
             

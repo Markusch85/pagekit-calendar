@@ -71,20 +71,15 @@
             },
         
             remove: function() {
-                var $hasCategories = false;
-                this.$http.post('api/calendar/categories/has-events', { categories: this.selected }, function(data) {
-                    if (data.hasEvents) {
-                        UIkit.notify(vm.$trans('One of the selected categories has already events.'));
-                    } else {
-                        this.$http.post('api/calendar/categories/remove', { ids: this.selected }, function() {
-                            UIkit.notify(vm.$trans('Categories deleted.'));
-                            this.load();
-                        }).error(function(data) {
-                            UIkit.notify(data, 'danger');
-                        });
-                    }
-                }).error(function(data) {
-                    UIkit.notify(data, 'danger');
+                if (!this.selected.length) {
+                    return;
+                }
+
+                this.resource.delete({ id: 'bulk' }, { ids: this.selected }).then(function () {
+                    this.load();
+                    this.$notify('Categories deleted.');
+                }, function (res) {
+                    this.$notify(res.data, 'danger');
                 });
             },
             
