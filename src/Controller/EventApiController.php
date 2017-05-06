@@ -6,7 +6,6 @@
     use MHDev\Calendar\Model\Event;
     
     /**
-     * @Access("calendar: manage events")
      * @Route("event", name="event")
      */
     class EventApiController
