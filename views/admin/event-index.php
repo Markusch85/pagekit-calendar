@@ -1,4 +1,4 @@
-<?php $view->script('event-index', 'calendar:app/admin/event-index.js', 'vue') ?>
+<?php $view->script('event-index', 'calendar:app/bundle/admin/event-index.js', 'vue') ?>
 
 <div id="events" class="uk-form">
     
