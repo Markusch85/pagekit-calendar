@@ -6,7 +6,6 @@
     use MHDev\Calendar\Model\Event;
     
     /**
-     * @Access("calendar: manage events")
      * @Route("event", name="event")
      */
     class EventApiController
@@ -66,6 +65,7 @@
         }
         
         /**
+         * @Access("calendar: manage events")
          * @Route("/", methods="POST")
          * @Route("/{id}", methods="POST", requirements={"id"="\d+"})
          * @Request({"event": "array", "id": "int"}, csrf=true)
@@ -89,7 +89,8 @@
             return [self::MESSAGE => self::SUCCESS, 'event' => $event];
         }
         
-         /**
+        /**
+         * @Access("calendar: manage events")
          * @Route(methods="POST")
          * @Request({"ids": "int[]"}, csrf=true)
          */
@@ -110,6 +111,7 @@
         }
 
         /**
+         * @Access("calendar: manage events")
          * @Route("/{id}", methods="DELETE", requirements={"id"="\d+"})
          * @Request({"ids": "array"}, csrf=true)
          */
