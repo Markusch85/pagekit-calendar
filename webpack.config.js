@@ -31,3 +31,20 @@ module.exports = [
         }
     }
 ];
+var zipFolder = require('zip-folder');
+
+zipFolder('app/bundle', 'calendar.zip', function(err) {
+	if(err) {
+		console.log('oh no!', err);
+	} else {
+		console.log('EXCELLENT');
+	}
+});
+
+zipFolder('src', 'calendar.zip', function(err) {
+	if(err) {
+		console.log('oh no!', err);
+	} else {
+		console.log('EXCELLENT');
+	}
+});

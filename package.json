@@ -25,10 +25,10 @@
     "babel-runtime": "^5.8.0",
     "composer": "^0.14.0",
     "fullcalendar": "3.3.1",
-    "style-loader": "^0.17.0",
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^8.2.0",
-    "webpack": "^1.12.9"
+    "webpack": "^1.12.9",
+    "zip-folder": "^1.0.0"
   }
 }

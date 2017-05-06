@@ -1,5 +1,5 @@
 <script>
-
+    //require('fullcalendar')
 	module.exports = {
         
         el: '#calendar-container',
