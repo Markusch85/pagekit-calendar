@@ -1,69 +1,33 @@
 module.exports = [
-    {
+     {
         entry: {
-            "settings": "./app/admin/settings.js"
+            "link-calendar": "./app/components/link-calendar.vue",
+            "calendar": "./app/components/calendar.vue"
         },
         output: {
             filename: "./app/bundle/[name].js"
         },
-        externals: {
-            "lodash": "_",
-            "jquery": "jQuery",
-            "vue": "Vue",
-            "uikit": "UIkit",
-            "dashboard": "Dashboard",
-            "fullcalendar": "fullcalendar"
-        },
         module: {
             loaders: [
-                {test: /\.json$/, loader: "json"},
-                {test: /\.vue$/, loader: "vue"}
+                { test: /\.vue$/, loader: "vue" }
             ]
         }
     },
     {
         entry: {
-            "fullcalendar": "./node_modules/fullcalendar/dist/fullcalendar.js",
-            "locale-all": "./node_modules/fullcalendar/dist/locale-all.js"
+            "settings": "./app/components/admin/settings.vue",
+            "category-edit": "./app/components/admin/category-edit.vue",
+            "category-index": "./app/components/admin/category-index.vue",
+            "event-edit": "./app/components/admin/event-edit.vue",
+            "event-index": "./app/components/admin/event-index.vue"
         },
         output: {
-            filename: "./assets/js/[name].min.js"
-        }/*,
-        externals: {
-            "lodash": "_",
-            "jquery": "jQuery",
-            "vue": "Vue",
-            "uikit": "UIkit",
-            "dashboard": "Dashboard",
-            "fullcalendar": "fullcalendar"
+            filename: "./app/bundle/admin/[name].js"
         },
         module: {
             loaders: [
-                {test: /\.json$/, loader: "json"},
-                {test: /\.vue$/, loader: "vue"}
-            ]
-        }*/
-    }/*,
-    {
-        entry: {
-            "fullcalendar": "./node_modules/fullcalendar/dist/fullcalendar.css"
-        },
-        output: {
-            filename: "./assets/css/[name].min.js"
-        },
-        externals: {
-            "lodash": "_",
-            "jquery": "jQuery",
-            "vue": "Vue",
-            "uikit": "UIkit",
-            "dashboard": "Dashboard",
-            "fullcalendar": "fullcalendar"
-        },
-        module: {
-            loaders: [
-                {test: /\.json$/, loader: "json"},
-                {test: /\.vue$/, loader: "vue"}
+                { test: /\.vue$/, loader: "vue" }
             ]
         }
-    }*/
+    }
 ];

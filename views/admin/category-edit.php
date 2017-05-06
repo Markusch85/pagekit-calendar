@@ -1,4 +1,4 @@
-<?php $view->script('category-edit', 'calendar:app/admin/category-edit.js', ['vue', 'editor', 'uikit']) ?>
+<?php $view->script('category-edit', 'calendar:app/bundle/admin/category-edit.js', ['vue', 'editor', 'uikit']) ?>
 
 <form id="category" class="uk-form" v-validator="form" @submit.prevent="save | valid">
 

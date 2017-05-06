@@ -1,7 +1,7 @@
-<?php $view->script('calendar', 'calendar:app/calendar.js', ['vue', 'editor', 'uikit']) ?>
+<?php $view->script('calendar', 'calendar:app/bundle/calendar.js', ['vue', 'editor', 'uikit']) ?>
 <?php $view->script('moment', 'calendar:assets/js/moment.min.js', 'jquery') ?>
-<?php $view->script('fullCalendar', 'calendar:assets/js/fullcalendar/fullcalendar.min.js') ?>
-<?php $view->script('locale-all', 'calendar:assets/js/fullcalendar/locale-all.min.js') ?>
+<?php $view->script('fullCalendar', 'calendar:assets/js/fullcalendar.min.js') ?>
+<?php $view->script('locale-all', 'calendar:assets/js/locale-all.min.js') ?>
 <?php $view->script('loading-indicator', 'calendar:assets/js/jquery.loading-indicator.min.js') ?>
 
 <?php $view->style('fullCalendar', 'calendar:assets/css/fullcalendar.min.css', ['uikit', 'theme'])?>

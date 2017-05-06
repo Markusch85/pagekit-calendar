@@ -1,4 +1,4 @@
-<?php $view->script('settings', 'calendar:app/admin/settings.js', 'vue') ?>
+<?php $view->script('settings', 'calendar:app/bundle/admin/settings.js', 'vue') ?>
 
 <div id="settings" class="uk-form uk-form-horizontal" v-cloak>
 

@@ -31,7 +31,7 @@
         },
 
         created: function () {
-            this.$http.get('api/calendar/categories/load').then(function (res) {
+            this.$http.get('api/calendar/category').then(function (res) {
                 this.$set('categories', res.data.categories);
             });
         },

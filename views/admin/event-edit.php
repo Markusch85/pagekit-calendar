@@ -1,4 +1,4 @@
-<?php $view->script('event-edit', 'calendar:app/admin/event-edit.js', ['vue', 'editor', 'uikit']) ?>
+<?php $view->script('event-edit', 'calendar:app/bundle/admin/event-edit.js', ['vue', 'editor', 'uikit']) ?>
 
 <form id="event" class="uk-form" v-validator="form" @submit.prevent="save | valid">
 
