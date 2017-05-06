@@ -110,23 +110,34 @@
 
         /**
          * @Route("/{id}", methods="DELETE", requirements={"id"="\d+"})
-         * @Request({"ids": "array"}, csrf=true)
+         * @Request({"id": "int"}, csrf=true)
          */
-        public function deleteAction($ids)
+        public function deleteAction($id)
         {
-            foreach ($ids as &$id) {
-                if(!App::user()->hasAccess(self::PERMISSION_MANAGE_EVENTS)) {
-                    App::abort(400, __('Access denied.'));
-                }
-                
-                if ($id && $event = Event::find($id)) {
-                    $event->delete();
-                } else {
-                    if ($id) {
-                        App::abort(404, __(self::ERROR_EVENT_NOT_FOUND));
-                    }
+            if(!App::user()->hasAccess(self::PERMISSION_MANAGE_EVENTS)) {
+                App::abort(400, __('Access denied.'));
+            }
+            
+            if ($id && $event = Event::find($id)) {
+                $event->delete();
+            } else {
+                if ($id) {
+                    App::abort(404, __(self::ERROR_EVENT_NOT_FOUND));
                 }
             }
             return [self::MESSAGE => self::SUCCESS];
         }
+
+        /**
+         * @Route("/bulk", methods="DELETE")
+         * @Request({"ids": "array"}, csrf=true)
+         */
+         public function bulkDeleteAction($ids = [])
+         {
+             foreach (array_filter($ids) as $id) {
+                 $this->deleteAction($id);
+             }
+
+             return ['message' => 'success'];
+         }
     }

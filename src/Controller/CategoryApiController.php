@@ -3,6 +3,7 @@
 
     use Pagekit\Application as App;
     use MHDev\Calendar\Model\Category;
+    use MHDev\Calendar\Model\Event;
 
     /**
      * @Access("calendar: manage categories")
@@ -104,23 +105,43 @@
 
         /**
          * @Route("/{id}", methods="DELETE", requirements={"id"="\d+"})
-         * @Request({"ids": "array"}, csrf=true)
+         * @Request({"id": "int"}, csrf=true)
          */
-        public function deleteAction($ids = [])
+        public function deleteAction($id)
         {
-            foreach ($ids as &$id) {
-                if(!App::user()->hasAccess(self::PERMISSION_MANAGE_CATEGORIES)) {
-                    App::abort(400, __('Access denied.'));
-                }
-                
-                if ($id && $category = Category::find($id)) {
-                    $category->delete();
-                } else {
-                    if ($id) {
-                        App::abort(404, __(self::ERROR_CATEGORY_NOT_FOUND));
-                    }
+            $query = Event::query();
+            $query->where(function ($query) use ($id) {
+                $query->orWhere(['category_id' => (int) $id]);
+            });
+
+            if ($query->count() > 0) {
+                App::abort(403, __("One of the selected categories has already events."));
+            }
+
+            if(!App::user()->hasAccess(self::PERMISSION_MANAGE_CATEGORIES)) {
+                App::abort(400, __('Access denied.'));
+            }
+            
+            if ($id && $category = Category::find($id)) {
+                $category->delete();
+            } else {
+                if ($id) {
+                    App::abort(404, __(self::ERROR_CATEGORY_NOT_FOUND));
                 }
             }
             return [self::MESSAGE => self::SUCCESS];
         }
+
+        /**
+         * @Route("/bulk", methods="DELETE")
+         * @Request({"ids": "array"}, csrf=true)
+         */
+         public function bulkDeleteAction($ids = [])
+         {
+             foreach (array_filter($ids) as $id) {
+                 $this->deleteAction($id);
+             }
+
+             return ['message' => 'success'];
+         }
     }
