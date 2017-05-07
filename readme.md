@@ -1,3 +1,4 @@
+
 # Pagekit Calendar
 Welcome to Pagekit Calendar
 
@@ -15,3 +16,10 @@ I will merge your Pull Request.
 You want to support this Project, but you can't develop?
 - Everyone who is able to translate this Extension is welcome to help us
 - The Wiki page can be extended, sp that it will be a Documentation
+
+## Buids
+Currently, I use VS Team Service to build the Extension. In the future it will be changed to an open CI Build Server
+### Latest CI Build Status
+![image](https://mh-dev.visualstudio.com/_apis/public/build/definitions/98f14f1b-2ee7-44aa-a783-cb5a2d8a625e/16/badge)
+### Latest Release Build Status
+![image](https://mh-dev.visualstudio.com/_apis/public/build/definitions/98f14f1b-2ee7-44aa-a783-cb5a2d8a625e/15/badge)
