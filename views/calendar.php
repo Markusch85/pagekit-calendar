@@ -29,7 +29,7 @@
     <div id='calendar'></div>
 
     <v-modal v-ref:modal>
-        <form class="uk-form uk-form-stacked">
+        <div class="uk-form uk-form-stacked">
 
             <div class="uk-modal-header">
                 <h2>{{ event.title }}</h2>
@@ -50,15 +50,16 @@
                     <span v-else>{{ event.end._i | date }}</span>
                 </div>
             </div>
-            
-            <div class="uk-form-row">
-                <div v-html="event.description"></div>
+            <hr/>
+            <div class="uk-overflow-container tm-overflow-container">            
+                <div class="uk-form-row">
+                    <div v-html="event.description"></div>
+                </div>
             </div>
-
             <div class="uk-modal-footer uk-text-right">
                 <button class="uk-button uk-button-link uk-modal-close" type="button">{{ 'Close' | trans }}</button>
             </div>
 
-        </form>
+        </div>
     </v-modal>
 </div>
