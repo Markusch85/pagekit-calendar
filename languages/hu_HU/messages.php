@@ -29,7 +29,7 @@ return [
     'Event not found.'                                                       => 'Esemény nem található',
     'Events deleted.'                                                        => 'Események törölve',
     'Event saved.'                                                           => 'Esemény elmentve',
-    'Start'                                                                  => 'kezdés',
+    'Start'                                                                  => 'Kezdés',
     'End'                                                                    => 'Vége',
     'Enter title'                                                            => 'Cím megadása',
     'Category'                                                               => 'Kategória',
