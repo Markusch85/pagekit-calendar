@@ -4,7 +4,7 @@
     "type": "pagekit-extension",
     "title": "Calendar",
     "license": "MIT",
-    "copyright": "(c) 2017 MH Development",
+    "copyright": "(c) 2018 MH Development",
     "description" : "Calendar extension for Pagekit",
     "authors": [
         {
