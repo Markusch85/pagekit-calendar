@@ -20,6 +20,6 @@ You want to support this Project, but you can't develop?
 ## Buids
 Currently, I use VS Team Service to build the Extension. In the future it will be changed to an open CI Build Server
 ### Latest CI Build Status
-![image](http://bamboo.mh-dev.net/plugins/servlet/wittified/build-status/PK-CAL)
+![Build Status](http://bamboo.mh-dev.net/plugins/servlet/wittified/build-status/PK-CAL)
 ### Latest Release Build Status
-![image](https://mh-dev.visualstudio.com/_apis/public/build/definitions/98f14f1b-2ee7-44aa-a783-cb5a2d8a625e/15/badge)
+![Build Status](http://bamboo.mh-dev.net/plugins/servlet/wittified/build-status/PK-CALREL)
